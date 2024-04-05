@@ -25,7 +25,7 @@ export function Navbar() {
 	const pathname = usePathname();
 
 	const handleRedirentToMyAccount = () => {
-		router.push("/register");
+		router.push("/dashboard");
 	};
 
 	useEffect(() => {
