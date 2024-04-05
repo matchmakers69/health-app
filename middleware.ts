@@ -13,7 +13,9 @@ export default auth((req: NextRequest & { auth: Session | null }): Response | vo
 	const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
 	const isAuthRoute = authRoutes.includes(nextUrl.pathname);
 
-	if (isApiAuthRoute) return;
+	if (isApiAuthRoute) {
+		return;
+	}
 
 	if (isAuthRoute) {
 		if (isLoggedIn) {
