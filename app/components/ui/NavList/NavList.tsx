@@ -25,7 +25,7 @@ export function NavList({ onClose }: NavListProps) {
 
 						<ul className="m-0 flex w-full flex-1 flex-col items-center justify-center p-0 md:flex-initial md:items-stretch">
 							{navigation.map((nav) => (
-								<li key={nav.id} className="py-3 pl-6 pr-6 text-left text-text-light md:pl-8 md:pr-8">
+								<li key={nav.id} className="py-4 pl-6 pr-6 text-left text-text-light md:pl-8 md:pr-8">
 									<motion.div {...framerText}>
 										<NavLink href={nav.href}>{nav.label}</NavLink>
 									</motion.div>

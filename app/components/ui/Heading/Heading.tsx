@@ -18,22 +18,15 @@ const IbmPlex = IBM_Plex_Sans({
 
 export function Heading({ title, subtitle }: HeadingProps) {
 	return (
-		<div className="heading-slogans pb-pb-2xl relative flex flex-col items-center justify-center gap-2">
+		<div className="heading-slogans relative flex flex-col items-center justify-center gap-2 pb-pb-2xl">
 			<h1
 				className={`${rubik.className} text-lg font-extrabold uppercase leading-[1.2] md:text-lg lg:text-2xl xl:text-3xl`}
 			>
 				{title}
 			</h1>
-			<Image
-				src="/apple-full.svg"
-				alt="logo"
-				className="cursor-pointer"
-				quality={100}
-				width={25}
-				height={25}
-			/>
+			<Image src="/apple-full.svg" alt="logo-healthy-app" quality={100} width={25} height={25} />
 			{subtitle && (
-				<p className={`${IbmPlex.className} md:text-md-xl text-sm font-semibold uppercase`}>{subtitle}</p>
+				<p className={`${IbmPlex.className} text-sm font-semibold uppercase md:text-md-xl`}>{subtitle}</p>
 			)}
 		</div>
 	);
