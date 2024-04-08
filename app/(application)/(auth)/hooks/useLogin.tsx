@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-floating-promises */
 import { zodResolver } from "@hookform/resolvers/zod";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { useState, useTransition } from "react";
@@ -28,8 +27,8 @@ export const useLogin = () => {
 		setError("");
 		startTransition(() => {
 			login(data).then((data) => {
-				setError(data.error);
-				setSuccess(data.success);
+				setError(data?.error);
+				setSuccess("Login was successful!");
 			});
 			reset();
 		});
