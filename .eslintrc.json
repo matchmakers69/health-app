@@ -23,9 +23,6 @@
 		"import/no-mutable-exports": "error",
 
 		"import/no-cycle": "error",
-		"import/no-default-export": "off",
-
-		"import/no-unresolved": "off",
 		"testing-library/prefer-screen-queries": "off",
 
 		"no-irregular-whitespace": ["error", { "skipJSXText": true }],

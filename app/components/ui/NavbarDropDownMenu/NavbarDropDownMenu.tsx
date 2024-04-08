@@ -41,4 +41,4 @@ function NavbarDropDownMenu({ button, children, classNames, animation }: NavbarD
 	);
 }
 
-export default NavbarDropDownMenu;
+export { NavbarDropDownMenu };

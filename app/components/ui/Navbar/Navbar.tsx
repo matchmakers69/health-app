@@ -8,7 +8,7 @@ import Image from "next/image";
 import { Logo } from "../Logo";
 import { NavList } from "../NavList";
 import { Button } from "../Button";
-import NavbarDropDownMenu from "../NavbarDropDownMenu/NavbarDropDownMenu";
+import { NavbarDropDownMenu } from "../NavbarDropDownMenu";
 import Avatar from "@/public/avatar.jpg";
 import { useScrollHeader } from "@/app/hooks/useStickyHeader";
 
