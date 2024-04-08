@@ -1,5 +1,4 @@
-import { renderHook } from "@testing-library/react-hooks";
-import { render, fireEvent, screen } from "@testing-library/react";
+import { render, fireEvent, screen, renderHook } from "@testing-library/react";
 import { useClickOutside } from "../useClickOutside";
 
 describe("Click outside detection works when", () => {
@@ -45,7 +44,7 @@ describe("Click outside detection works when", () => {
 		fireEvent.mouseDown(screen.getByText(/Click me outside/));
 		fireEvent.mouseDown(screen.getByText(/Click me inside/));
 
-		//expect(onOutSideSpy).toHaveBeenCalledTimes(1);
+		expect(onOutSideSpy).toHaveBeenCalledTimes(1);
 	});
 
 	it("removes event listeners", () => {
