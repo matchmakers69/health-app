@@ -9,13 +9,13 @@ import { Logo } from "../Logo";
 import { NavList } from "../NavList";
 import { Button } from "../Button";
 import { NavbarDropDownMenu } from "../NavbarDropDownMenu";
+import { DropdownNavbarList } from "../DropdownNavbarList";
 import Avatar from "@/public/avatar.jpg";
 import { useScrollHeader } from "@/app/hooks/useStickyHeader";
 import { appLinkLabels, headerLabels } from "@/lib/appData";
 import { routes } from "@/lib/routes";
-import { DropdownNavbarList } from "../DropdownNavbarList";
 
-export function Navbar() {
+function Navbar() {
 	const [isMenuOpened, setIsMenuOpened] = useState(false);
 	const isStickyHeader = useScrollHeader();
 
@@ -86,3 +86,5 @@ export function Navbar() {
 		</header>
 	);
 }
+
+export { Navbar };
