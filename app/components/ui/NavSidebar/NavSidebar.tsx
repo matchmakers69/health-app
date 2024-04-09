@@ -1,16 +1,23 @@
 import { motion } from "framer-motion";
 import { NavLink } from "../NavLink";
 import { CloseSidebarButton } from "../CloseSidebarButton/CloseSidebarButton";
-import { type NavListProps } from "./defs";
 import { framerSidebarBackground, framerSidebarPanel, navigation, framerText } from "@/lib/constants";
+import { useAppLayoutContext } from "@/app/context/AppLayoutContext";
+import { useClickOutside } from "@/app/hooks/useClickOutside";
 
-export function NavList({ onClose }: NavListProps) {
+export function NavSidebar() {
+	const { handleCloseSidebarMenu, handleClickOutside } = useAppLayoutContext();
+
+	const { ref } = useClickOutside<HTMLDivElement>({
+		onOutside: handleClickOutside,
+	});
 	return (
 		<>
 			<motion.div
 				{...framerSidebarBackground}
 				aria-hidden="true"
 				className="overlay-menu z-1 fixed bottom-0 left-0 right-0 top-0 h-full w-full bg-[rgba(0,0,0,0.2)] backdrop-blur-sm"
+				ref={ref}
 			/>
 			<motion.div
 				{...framerSidebarPanel}
@@ -20,7 +27,7 @@ export function NavList({ onClose }: NavListProps) {
 				<div className="nav-menu-container z-2 relative flex h-full w-full max-w-[32rem] md:max-w-[34rem] lg:max-w-[36rem]">
 					<div className="text-text-text-light relative z-10 flex min-h-screen w-full flex-col justify-between gap-2 overflow-y-auto bg-dark-purple pb-10 pt-10 text-left">
 						<header className="sidebar-header flex flex-col px-[1.5rem] md:px-[2rem]">
-							<CloseSidebarButton onClose={onClose} />
+							<CloseSidebarButton onClose={handleCloseSidebarMenu} />
 						</header>
 
 						<ul className="m-0 flex w-full flex-1 flex-col items-center justify-center p-0 md:flex-initial md:items-stretch">

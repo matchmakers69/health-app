@@ -170,14 +170,14 @@ textarea {
 
 .sidebar-menu-toggle-button-icon::after,
 .sidebar-menu-toggle-button-icon::before,
-.sidebar-menu-toggle-button-icon-dark::after,
-.sidebar-menu-toggle-button-icon-dark::before {
+.site-menu-toggle-icon-dark::after,
+.site-menu-toggle-icon-dark::before {
 	content: "";
 	height: 1px;
 }
 
 .sidebar-menu-toggle-button-icon::after,
-.sidebar-menu-toggle-button-icon-dark::after {
+.site-menu-toggle-icon-dark::after {
 	width: 0.8rem;
 	margin: 3px 0;
 }

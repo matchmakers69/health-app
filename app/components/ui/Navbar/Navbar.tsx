@@ -1,12 +1,10 @@
 "use client";
 
-import { AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { Logo } from "../Logo";
-import { NavList } from "../NavList";
 import { Button } from "../Button";
 import { NavbarDropDownMenu } from "../NavbarDropDownMenu";
 import { DropdownNavbarList } from "../DropdownNavbarList";
@@ -14,23 +12,16 @@ import Avatar from "@/public/avatar.jpg";
 import { useScrollHeader } from "@/app/hooks/useStickyHeader";
 import { appLinkLabels, headerLabels } from "@/lib/appData";
 import { routes } from "@/lib/routes";
+import { useAppLayoutContext } from "@/app/context/AppLayoutContext";
 
 function Navbar() {
-	const [isMenuOpened, setIsMenuOpened] = useState(false);
+	const { isNavInView, handleCloseSidebarMenu, handleOpenSidebarMenu } = useAppLayoutContext();
 	const isStickyHeader = useScrollHeader();
-
-	const handleOpenMenuSidebar = () => {
-		setIsMenuOpened(true);
-	};
-
-	const handleCloseMenuSidebar = () => {
-		setIsMenuOpened(false);
-	};
 
 	const pathname = usePathname();
 
 	useEffect(() => {
-		if (isMenuOpened) setIsMenuOpened(false);
+		if (isNavInView) handleCloseSidebarMenu();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [pathname]);
 
@@ -44,7 +35,7 @@ function Navbar() {
 				<div className="site-header-left flex h-full flex-1 items-center">
 					<button
 						className="sidebar-menu-toggle-button border-r-gray-15 inline-flex h-full cursor-pointer items-center p-[1.5rem] text-[14px] uppercase focus:outline-none focus:ring-1 focus:ring-sky-500 md:p-[20px]"
-						onClick={handleOpenMenuSidebar}
+						onClick={handleOpenSidebarMenu}
 						type="button"
 						aria-label="toggle sidebar"
 					>
@@ -80,9 +71,6 @@ function Navbar() {
 					</div>
 				</div>
 			</nav>
-			<AnimatePresence initial={false}>
-				{isMenuOpened && <NavList onClose={handleCloseMenuSidebar} />}
-			</AnimatePresence>
 		</header>
 	);
 }

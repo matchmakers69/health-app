@@ -16,12 +16,12 @@ export function NavbarDashboard() {
 
 	return (
 		<header
-			className={`${isStickyHeader ? "shadow-lg" : "h-[7rem]"} border-bottom-nav text-dark-green sticky left-[0] top-[0] z-30 w-full py-[1.5rem] transition-all md:py-[2rem]`}
+			className={`${isStickyHeader ? "shadow-lg" : "h-[7rem]"} border-bottom-nav sticky left-[0] top-[0] z-30 w-full py-[1.5rem] text-dark-green transition-all md:py-[2rem]`}
 		>
 			<nav className="relative z-10 flex h-full w-full items-center">
 				<div className="site-header-left flex h-full flex-1 items-center">
 					<button
-						className="site-menu-toggle inline-flex h-full cursor-pointer items-center p-[1.5rem] pl-0 text-[14px] uppercase"
+						className="site-menu-toggle-button-dark inline-flex h-full cursor-pointer items-center p-[1.5rem] pl-0 text-[14px] uppercase focus:outline-none focus:ring-1 focus:ring-[rgba(255,255,255,.8)]"
 						onClick={handleToggleSidebar}
 						type="button"
 						aria-label="toggle sidebar"
