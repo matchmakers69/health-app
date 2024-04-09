@@ -22,15 +22,24 @@ export const useLogin = () => {
 		},
 	});
 
-	const handleLoginSubmit: SubmitHandler<LoginFormValues> = (data) => {
+	const handleLoginSubmit: SubmitHandler<LoginFormValues> = (values) => {
 		setSuccess("");
 		setError("");
 		startTransition(() => {
-			login(data).then((data) => {
-				setError(data?.error);
-				setSuccess("Login was successful!");
+			login(values).then((data) => {
+				if (data?.error) {
+					reset();
+					setError(data?.error);
+				}
+				reset();
+				setSuccess("Login action success");
+
+				// TODO fix when existing user checked
+				// if (data?.success) {
+				// 	reset();
+				// 	setSuccess(data.success);
+				// }
 			});
-			reset();
 		});
 	};
 
