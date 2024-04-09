@@ -1,5 +1,6 @@
 import NextAuth, { type Session } from "next-auth";
 import { type NextRequest } from "next/server";
+import { routes } from "./lib/routes";
 import authConfig from "@/auth.config";
 import { DEFAULT_LOGIN_REDIRECT, apiAuthPrefix, authRoutes, publicRoutes } from "@/routes";
 
@@ -25,7 +26,7 @@ export default auth((req: NextRequest & { auth: Session | null }): Response | vo
 	}
 
 	if (!isLoggedIn && !isPublicRoute) {
-		return Response.redirect(new URL("/login", nextUrl));
+		return Response.redirect(new URL(routes.LOGIN, nextUrl));
 	}
 
 	return;

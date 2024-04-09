@@ -11,9 +11,11 @@ import { Button } from "../Button";
 import { NavbarDropDownMenu } from "../NavbarDropDownMenu";
 import Avatar from "@/public/avatar.jpg";
 import { useScrollHeader } from "@/app/hooks/useStickyHeader";
+import { appLinkLabels, headerLabels } from "@/lib/appData";
+import { routes } from "@/lib/routes";
+import { DropdownNavbarList } from "../DropdownNavbarList";
 
 export function Navbar() {
-	// const router = useRouter();
 	const [isMenuOpened, setIsMenuOpened] = useState(false);
 	const isStickyHeader = useScrollHeader();
 
@@ -32,8 +34,6 @@ export function Navbar() {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [pathname]);
 
-	// shadow-header fixed top-0 z-[500] h-[80px] w-full
-
 	return (
 		<header
 			className={`${
@@ -43,13 +43,13 @@ export function Navbar() {
 			<nav className="relative z-10 flex h-full w-full items-center">
 				<div className="site-header-left flex h-full flex-1 items-center">
 					<button
-						className="site-menu-toggle border-r-gray-15 inline-flex h-full cursor-pointer items-center p-[1.5rem] text-[14px] uppercase md:p-[20px]"
+						className="sidebar-menu-toggle-button border-r-gray-15 inline-flex h-full cursor-pointer items-center p-[1.5rem] text-[14px] uppercase focus:outline-none focus:ring-1 focus:ring-sky-500 md:p-[20px]"
 						onClick={handleOpenMenuSidebar}
 						type="button"
 						aria-label="toggle sidebar"
 					>
-						<span className="site-menu-toggle-icon mr-[0.8rem] inline-flex h-[1.5rem] w-[1.5rem] flex-col items-start" />
-						menu
+						<span className="sidebar-menu-toggle-button-icon mr-[0.8rem] inline-flex h-[1.5rem] w-[1.5rem] flex-col items-start" />
+						{headerLabels.MENU}
 					</button>
 				</div>
 				<div className="site-header-logo relative">
@@ -60,10 +60,10 @@ export function Navbar() {
 				<div className="site-header-right relative flex h-full flex-1 flex-wrap items-center justify-end">
 					<div className="auth-buttons-wrapper flex items-center gap-6 pr-[1.5rem] md:pr-[20px]">
 						<Button className="hidden uppercase md:flex" variant="default" asChild size="sm">
-							<Link href="/login">Login</Link>
+							<Link href={routes.LOGIN}>{appLinkLabels.LOGIN}</Link>
 						</Button>
 						<Button className="hidden uppercase md:flex" variant="outline" asChild size="sm">
-							<Link href="/register">Register</Link>
+							<Link href={routes.REGISTER}>{appLinkLabels.REGISTER}</Link>
 						</Button>
 					</div>
 					<div className="pr-[1.5rem] md:pr-[20px]">
@@ -73,31 +73,14 @@ export function Navbar() {
 						>
 							<div className="shadow-drop-down w-full overflow-hidden rounded-2xl bg-[rgba(255,255,255,.96)]">
 								<div className="inner-drop-down flex flex-col items-start justify-between p-[1rem]">
-									<ul className="drop-down-list w-full">
-										<li className="w-full">
-											<Link
-												className="flex w-full flex-col justify-start px-[1.2rem] py-[1rem] text-[1.6rem] text-navy transition-all duration-300 hover:rounded-2xl hover:bg-[rgba(31,81,156,.2)]"
-												href="/dashboard"
-											>
-												Dashboard
-											</Link>
-										</li>
-										<li className="w-full">
-											<Link
-												className="flex w-full flex-col justify-start px-[1.2rem] py-[1rem] text-[1.6rem] text-navy transition-all duration-300 hover:rounded-2xl hover:bg-[rgba(31,81,156,.2)]"
-												href="/dashboard"
-											>
-												Logout
-											</Link>
-										</li>
-									</ul>
+									<DropdownNavbarList />
 								</div>
 							</div>
 						</NavbarDropDownMenu>
 					</div>
 				</div>
 			</nav>
-			<AnimatePresence mode="wait" initial={false}>
+			<AnimatePresence initial={false}>
 				{isMenuOpened && <NavList onClose={handleCloseMenuSidebar} />}
 			</AnimatePresence>
 		</header>

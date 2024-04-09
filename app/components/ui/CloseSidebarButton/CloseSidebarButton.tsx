@@ -4,7 +4,7 @@ function CloseSidebarButton({ onClose }: CloseSidebarButtonProps) {
 	return (
 		<button
 			type="button"
-			className="close-menu inline-flex h-[3rem] cursor-pointer items-center text-[13px] uppercase tracking-[.15rem] text-gray-200"
+			className="close-menu inline-flex h-[3rem] cursor-pointer items-center text-[13px] uppercase tracking-[.15rem] text-gray-200 focus:outline-none focus:ring-1 focus:ring-sky-500"
 			onClick={onClose}
 		>
 			<div className="menu-close-icon relative flex h-[1.5rem] w-[1.5rem] flex-col items-start justify-center">

@@ -19,14 +19,18 @@ function NavbarDropDownMenu({ button, children, classNames, animation }: NavbarD
 
 	return (
 		<div className="relative" ref={ref}>
-			<div role="button" className="flex items-center gap-2" onClick={handleToggleDropdown}>
+			<button
+				type="button"
+				className="flex items-center gap-2 bg-transparent focus:outline-none focus:ring-1 focus:ring-sky-500"
+				onClick={handleToggleDropdown}
+			>
 				<div className="logo-img-wrapper flex h-[4rem] w-[4rem] flex-col items-center justify-center overflow-hidden rounded-full">
 					{button}
 				</div>
 				<i
 					className={`ri-${openWrapper ? "arrow-up-s-fill" : "arrow-down-s-fill"} text-[1.6rem] text-white`}
 				></i>
-			</div>
+			</button>
 			<div
 				className={cn(
 					`absolute z-10 ${

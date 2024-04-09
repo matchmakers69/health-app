@@ -2,17 +2,18 @@
 
 import { usePathname, useRouter } from "next/navigation";
 import { Button } from "../Button";
+import { routes } from "@/lib/routes";
 
 export const FooterAuth = () => {
 	const router = useRouter();
 	const pathname = usePathname();
-	const isLoginPage = pathname === "/login";
+	const isLoginPage = pathname === routes.LOGIN;
 
 	const handleRedirectByUrl = () => {
 		if (isLoginPage) {
-			router.push("/register");
+			router.push(routes.REGISTER);
 		} else {
-			router.push("/login");
+			router.push(routes.LOGIN);
 		}
 	};
 

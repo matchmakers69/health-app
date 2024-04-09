@@ -6,6 +6,7 @@ import { FormSuccess } from "../../ui/FormSuccess";
 import { CardWrapper } from "../CardWrapper";
 import { Input } from "../../ui/Input";
 import { useRegister } from "@/app/(application)/(auth)/hooks/useRegister";
+import { routes } from "@/lib/routes";
 
 export function RegisterForm() {
 	const { submitRegister, register, errors, isDirty, isSubmitting, isPending, success, error } =
@@ -14,7 +15,7 @@ export function RegisterForm() {
 		<CardWrapper
 			headerLabel="Fill in your details below and click Register to create an account:"
 			backButtonLabel="Already have an account?"
-			backButtonHref="/login"
+			backButtonHref={routes.LOGIN}
 			showSocial
 		>
 			<form autoComplete="off" noValidate onSubmit={submitRegister}>

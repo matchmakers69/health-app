@@ -168,27 +168,27 @@ textarea {
 	border-right: 1px solid rgba(var(--border-bottom-light), 1);
 }
 
-.site-menu-toggle-icon::after,
-.site-menu-toggle-icon::before,
-.site-menu-toggle-icon-dark::after,
-.site-menu-toggle-icon-dark::before {
+.sidebar-menu-toggle-button-icon::after,
+.sidebar-menu-toggle-button-icon::before,
+.sidebar-menu-toggle-button-icon-dark::after,
+.sidebar-menu-toggle-button-icon-dark::before {
 	content: "";
 	height: 1px;
 }
 
-.site-menu-toggle-icon::after,
-.site-menu-toggle-icon-dark::after {
+.sidebar-menu-toggle-button-icon::after,
+.sidebar-menu-toggle-button-icon-dark::after {
 	width: 0.8rem;
 	margin: 3px 0;
 }
 
 .site-menu-toggle-icon-dark::before,
-.site-menu-toggle-icon::before {
+.sidebar-menu-toggle-button-icon::before {
 	width: 1.4rem;
 	margin: 3px 0;
 }
 
-.site-menu-toggle-icon::after {
+.sidebar-menu-toggle-button-icon::after {
 	background: rgb(var(--text-light));
 }
 
@@ -196,7 +196,7 @@ textarea {
 	background: rgb(var(--dark-green));
 }
 
-.site-menu-toggle-icon::before {
+.sidebar-menu-toggle-button-icon::before {
 	background: rgb(var(--text-light));
 }
 

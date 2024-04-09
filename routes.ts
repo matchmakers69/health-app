@@ -1,3 +1,5 @@
+import { routes } from "./lib/routes";
+
 /**
  * An array of routes that are accesible to the public
  * These routes do not require authentication
@@ -10,7 +12,7 @@ export const publicRoutes = ["/"];
  * These routes will redirect logged users to /dashboard
  * @type {string[]}
  */
-export const authRoutes = ["/login", "/register"];
+export const authRoutes = [routes.LOGIN, routes.REGISTER];
 
 /**
  * The prefix for API authentication routes
@@ -23,4 +25,4 @@ export const apiAuthPrefix = "/api/auth";
  * The default redirect path after logging in
  * @type {string}
  */
-export const DEFAULT_LOGIN_REDIRECT = "/dashboard";
+export const DEFAULT_LOGIN_REDIRECT = routes.DASHBOARD;

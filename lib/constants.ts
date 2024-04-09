@@ -1,23 +1,39 @@
+import { appLinkLabels } from "./appData";
+import { routes } from "./routes";
+
 export const navigation = [
 	{
 		id: 1,
-		label: "Home",
-		href: "/",
+		label: appLinkLabels.HOME,
+		href: routes.HOME,
 	},
 	{
 		id: 2,
-		label: "Dashboard",
-		href: "/dashboard",
+		label: appLinkLabels.DASHBOARD,
+		href: routes.DASHBOARD,
 	},
 	{
 		id: 3,
-		label: "Login",
-		href: "/login",
+		label: appLinkLabels.LOGIN,
+		href: routes.LOGIN,
 	},
 	{
 		id: 4,
-		label: "Register",
-		href: "/register",
+		label: appLinkLabels.REGISTER,
+		href: routes.REGISTER,
+	},
+];
+
+export const dropDownNav = [
+	{
+		id: 1,
+		label: appLinkLabels.DASHBOARD,
+		href: routes.DASHBOARD,
+	},
+	{
+		id: 2,
+		label: appLinkLabels.SIGN_OUT,
+		href: "",
 	},
 ];
 

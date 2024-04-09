@@ -13,11 +13,14 @@ export const NavLink = ({ href, children, className, ...props }: NavLinkProps) =
 	return (
 		<Link
 			href={href}
-			className={cn("text text-[2rem] sm:text-[2.5rem] md:text-[3rem]", {
-				className,
-				"active-link relative inline-block": isActive,
-				"text-text-light": !isActive,
-			})}
+			className={cn(
+				"text text-[2rem] focus:outline-none focus:ring-1 focus-visible:ring-ring sm:text-[2.5rem] md:text-[3rem]",
+				{
+					className,
+					"active-link relative inline-block": isActive,
+					"text-text-light": !isActive,
+				},
+			)}
 			{...props}
 		>
 			{children}

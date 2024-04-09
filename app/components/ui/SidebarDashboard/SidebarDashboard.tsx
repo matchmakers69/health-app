@@ -5,6 +5,7 @@ import { CloseSidebarButton } from "../CloseSidebarButton/CloseSidebarButton";
 import { Logo } from "../Logo";
 import { UserMenu } from "./UserMenu";
 import { useDashboardLayoutContext } from "@/app/context/DashboardLayoutContext";
+import { routes } from "@/lib/routes";
 
 function SidebarDashboard() {
 	const { isSidebarInView, dispatch } = useDashboardLayoutContext();
@@ -27,7 +28,7 @@ function SidebarDashboard() {
 							<CloseSidebarButton onClose={handleCloseSidebar} />
 						</div>
 						<div className="site-header-logo border-bottom-nav relative mb-[2rem] pb-[2rem]">
-							<Link className="flex flex-col items-center justify-center" href="/">
+							<Link className="flex flex-col items-center justify-center" href={routes.HOME}>
 								<Logo width={45} height={45} />
 							</Link>
 						</div>
