@@ -8,5 +8,4 @@ export interface AppLayoutContextInit {
 	isNavInView: boolean;
 	handleCloseSidebarMenu: () => void;
 	handleOpenSidebarMenu: () => void;
-	handleClickOutside: () => void;
 }

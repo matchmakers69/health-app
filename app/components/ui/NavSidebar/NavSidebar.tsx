@@ -3,21 +3,16 @@ import { NavLink } from "../NavLink";
 import { CloseSidebarButton } from "../CloseSidebarButton/CloseSidebarButton";
 import { framerSidebarBackground, framerSidebarPanel, navigation, framerText } from "@/lib/constants";
 import { useAppLayoutContext } from "@/app/context/AppLayoutContext";
-import { useClickOutside } from "@/app/hooks/useClickOutside";
 
 export function NavSidebar() {
-	const { handleCloseSidebarMenu, handleClickOutside } = useAppLayoutContext();
+	const { handleCloseSidebarMenu } = useAppLayoutContext();
 
-	const { ref } = useClickOutside<HTMLDivElement>({
-		onOutside: handleClickOutside,
-	});
 	return (
 		<>
 			<motion.div
 				{...framerSidebarBackground}
 				aria-hidden="true"
 				className="overlay-menu z-1 fixed bottom-0 left-0 right-0 top-0 h-full w-full bg-[rgba(0,0,0,0.2)] backdrop-blur-sm"
-				ref={ref}
 			/>
 			<motion.div
 				{...framerSidebarPanel}

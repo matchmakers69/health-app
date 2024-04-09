@@ -16,16 +16,11 @@ export const AppLayoutContextProvider = ({ children }: AppLayoutContextProps) =>
 		setIsNavInView(false);
 	};
 
-	const handleClickOutside = () => {
-		setIsNavInView(false);
-	};
-
 	const value = useMemo(
 		() => ({
 			isNavInView,
 			handleCloseSidebarMenu,
 			handleOpenSidebarMenu,
-			handleClickOutside,
 		}),
 		[isNavInView],
 	);
