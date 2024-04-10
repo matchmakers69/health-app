@@ -5,7 +5,7 @@ import { FormError } from "../../ui/FormError";
 import { FormSuccess } from "../../ui/FormSuccess";
 import { Input } from "../../ui/Input";
 import { CardWrapper } from "../CardWrapper";
-import { useLogin } from "@/app/(application)/(auth)/hooks/useLogin";
+import { useLogin } from "@/app/(application)/(authentication)/hooks/useLogin";
 
 export function LoginForm() {
 	const { submitLogin, register, errors, isDirty, isSubmitting, isPending, success, error } = useLogin();

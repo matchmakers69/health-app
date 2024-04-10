@@ -5,16 +5,17 @@ import { FormError } from "../../ui/FormError";
 import { FormSuccess } from "../../ui/FormSuccess";
 import { CardWrapper } from "../CardWrapper";
 import { Input } from "../../ui/Input";
-import { useRegister } from "@/app/(application)/(auth)/hooks/useRegister";
 import { routes } from "@/lib/routes";
+import { useRegister } from "@/app/(application)/(authentication)/hooks/useRegister";
+import { pagesText } from "@/lib/appData";
 
 export function RegisterForm() {
 	const { submitRegister, register, errors, isDirty, isSubmitting, isPending, success, error } =
 		useRegister();
 	return (
 		<CardWrapper
-			headerLabel="Fill in your details below and click Register to create an account:"
-			backButtonLabel="Already have an account?"
+			headerLabel={pagesText.AUTH_PAGES.REGISTER.cardTitle}
+			backButtonLabel={pagesText.AUTH_PAGES.REGISTER.cardTitle}
 			backButtonHref={routes.LOGIN}
 			showSocial
 		>

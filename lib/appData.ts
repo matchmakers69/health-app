@@ -9,3 +9,23 @@ export const appLinkLabels = {
 export const headerLabels = {
 	MENU: "Menu",
 };
+
+export const pagesText = {
+	AUTH_PAGES: {
+		LOGIN: {
+			title: "Login",
+			subtitle: "Welcome to That Festival Site!",
+		},
+
+		REGISTER: {
+			cardTitle: "Fill in your details below and click Register to create an account:",
+			backButtonLabel: "Already have an account?",
+		},
+
+		ERROR: {
+			title: "Sorry, error occured!",
+			cardTitle: "Oops! Something went wrong!",
+			backButtonLabel: "Back to login",
+		},
+	},
+};

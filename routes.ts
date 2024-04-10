@@ -5,14 +5,14 @@ import { routes } from "./lib/routes";
  * These routes do not require authentication
  * @type {string[]}
  */
-export const publicRoutes = ["/"];
+export const publicRoutes = [routes.HOME];
 
 /**
  * An array of routes that are used for authentication
  * These routes will redirect logged users to /dashboard
  * @type {string[]}
  */
-export const authRoutes = [routes.LOGIN, routes.REGISTER];
+export const authRoutes = [routes.LOGIN, routes.REGISTER, routes.ERROR];
 
 /**
  * The prefix for API authentication routes
