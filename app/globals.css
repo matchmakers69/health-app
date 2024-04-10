@@ -99,14 +99,14 @@ textarea {
 		--navy: 1, 42, 74;
 		--dark-green: 42, 49, 50;
 		--foreground-green: 27, 67, 50;
-		--foreground-purple: 157, 78, 221;
+		--foreground-blue: 33, 158, 188;
+		--light-blue: 142, 202, 230;
 		--foreground-grey: 74, 78, 105;
 		--light-green: 216, 243, 220;
 		--light-grey: 159, 162, 187;
 		--dark-purple: 20, 33, 61;
 		--bg-purple: 36, 0, 70;
 		--wave-purple: 60, 9, 108;
-		--footer-purple: 224, 170, 255;
 		--spacer-x3: clamp(4rem, 2vw + 1.6px, 8rem);
 		--spacer-x2: clamp(22.71px, 4.8vw + 17.99px, 4rem);
 		--popover: 0 0% 100%;
@@ -258,7 +258,7 @@ textarea {
 	fill: rgb(var(--foreground-green));
 }
 
-.wave-marketing {
+.footer-wave-marketing {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -267,15 +267,15 @@ textarea {
 	line-height: 0;
 }
 
-.wave-marketing svg {
+.footer-wave-marketing svg {
 	position: relative;
 	display: block;
 	width: calc(100% + 1.3px);
 	height: 177px;
 }
 
-.wave-marketing .shape-fill {
-	fill: rgb(var(--foreground-purple));
+.footer-wave-marketing .shape-fill {
+	fill: rgb(var(--foreground-blue));
 }
 
 .wave-footer-auth {

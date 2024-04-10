@@ -53,7 +53,8 @@ const config: Config = {
 				"dark-green": "rgb(var(--dark-green))",
 				"foreground-green": "rgb(var(--foreground-green))",
 				"border-bottom-light": "rgba(var(--border-bottom-light))",
-				"foreground-purple": "rgb(var(--foreground-purple))",
+				"foreground-blue": "rgb(var(--foreground-blue))",
+				"light-blue": "rgb(var(--light-blue))",
 				"foreground-grey": "rgb(var(--foreground-grey))",
 				"light-green": "rgb(var(--light-green))",
 				"light-grey": "rgb(var(--light-grey))",
@@ -61,7 +62,6 @@ const config: Config = {
 				"bg-purple": "rgb(var(--bg-purple))",
 				"wave-purple": "rgb(var(--wave-purple))",
 				"text-light": "rgb(var(--text-light))",
-				"footer-purple": "rgb(var(--footer-purple))",
 				foreground: "rgb(var(--foreground))",
 
 				primary: {

@@ -15,7 +15,7 @@ function MarketingLayoutContent({ children }: MarketingLayoutContentProps) {
 		<>
 			<AnimatePresence initial={false}>{isNavInView && <NavSidebar />}</AnimatePresence>
 			<Navbar />
-			<main className="animated flex min-h-[50vh] max-w-full flex-2 flex-col bg-foreground-purple pt-[80px]">
+			<main className="animated bg-foreground-blue flex min-h-[50vh] max-w-full flex-2 flex-col pt-[80px]">
 				<Suspense fallback={<Loading />}>{children}</Suspense>
 			</main>
 		</>

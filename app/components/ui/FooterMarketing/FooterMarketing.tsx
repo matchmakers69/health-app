@@ -1,13 +1,13 @@
 export function FooterMarketing() {
 	return (
-		<footer className="bg-footer-purple relative mt-auto w-full py-10 pt-[120px] text-navy md:pt-[140px]">
+		<footer className="bg-light-blue relative mt-auto w-full py-10 pt-[120px] text-navy md:pt-[140px]">
 			<div className="container mx-auto">
 				<div className="mx-auto p-4">
 					<p className="caption text-n-4 lg:block">© {new Date().getFullYear()}. All rights reserved.</p>
 				</div>
 			</div>
 
-			<div className="wave-marketing">
+			<div className="footer-wave-marketing">
 				<svg
 					data-name="footer-wave-marketing"
 					xmlns="http://www.w3.org/2000/svg"
