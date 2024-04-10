@@ -1,7 +1,9 @@
 import Image from "next/image";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import { signOut } from "next-auth/react";
+import { Button } from "../../Button";
 import Avatar from "@/public/avatar.jpg";
+import { logOut } from "@/app/actions/logOut";
+import { appLinkLabels } from "@/lib/appData";
 
 function UserMenu() {
 	return (
@@ -28,18 +30,20 @@ function UserMenu() {
 								}}
 							>
 								<DropdownMenu.Item className="relative flex h-[2.5rem] select-none items-center px-[.5rem] pl-[1rem] text-[1.4rem] leading-none outline-none data-[disabled]:pointer-events-none">
-									<span
-										className=" text-black"
-										role="button"
-										onClick={() =>
-											signOut({
-												redirect: true,
-												callbackUrl: `${window.location.origin}auth/login`,
-											})
-										}
+									<form
+										noValidate
+										autoComplete="off"
+										className="flex h-full w-full flex-col justify-center"
+										action={logOut}
 									>
-										Logout
-									</span>
+										<Button
+											className="flex h-full w-full flex-col items-start  justify-center px-[1.2rem] py-0 text-[1.6rem] font-normal text-navy"
+											variant="ghost"
+											type="submit"
+										>
+											{appLinkLabels.SIGN_OUT}
+										</Button>
+									</form>
 								</DropdownMenu.Item>
 							</DropdownMenu.Content>
 						</DropdownMenu.Portal>

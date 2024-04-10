@@ -1,13 +1,20 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { useState, useTransition } from "react";
+import { useSearchParams } from "next/navigation";
 import { login } from "@/app/actions/login";
 import { type LoginFormValues, loginSchema } from "@/app/components/auth/LoginForm/validation/loginSchema";
+import { pagesText } from "@/lib/appData";
 
 export const useLogin = () => {
 	const [isPending, startTransition] = useTransition();
 	const [success, setSuccess] = useState<string | undefined>("");
 	const [error, setError] = useState<string | undefined>("");
+	const searchParams = useSearchParams();
+	const urlError =
+		searchParams.get("error") === "OAuthAccountNotLinked"
+			? `${pagesText.AUTH_PAGES.ERROR.OAuthAccountError}`
+			: "";
 	const {
 		register,
 		reset,
@@ -32,7 +39,6 @@ export const useLogin = () => {
 					setError(data?.error);
 				}
 				reset();
-				setSuccess("Login action success");
 
 				// TODO fix when existing user checked
 				// if (data?.success) {
@@ -54,5 +60,6 @@ export const useLogin = () => {
 		isPending,
 		success,
 		error,
+		urlError,
 	};
 };

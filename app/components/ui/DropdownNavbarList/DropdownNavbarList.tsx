@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { Button } from "../Button";
-import { dropDownNav } from "@/lib/constants";
+import { type DropdownNavbarListProps } from "./defs";
 import { appLinkLabels } from "@/lib/appData";
 import { logOut } from "@/app/actions/logOut";
 
-function DropdownNavbarList() {
+function DropdownNavbarList({ dropDownList }: DropdownNavbarListProps) {
 	return (
 		<ul className="drop-down-list w-full">
-			{dropDownNav.map((dropDownLink) => {
+			{dropDownList.map((dropDownLink) => {
 				if (dropDownLink.label === appLinkLabels.SIGN_OUT) {
 					return (
 						<li

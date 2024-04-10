@@ -15,6 +15,7 @@ export const pagesText = {
 		LOGIN: {
 			title: "Login",
 			subtitle: "Welcome to That Festival Site!",
+			noAccountText: "Don't have an account?",
 		},
 
 		REGISTER: {
@@ -26,6 +27,7 @@ export const pagesText = {
 			title: "Sorry, error occured!",
 			cardTitle: "Oops! Something went wrong!",
 			backButtonLabel: "Back to login",
+			OAuthAccountError: "Email already in use with different provider!",
 		},
 	},
 };

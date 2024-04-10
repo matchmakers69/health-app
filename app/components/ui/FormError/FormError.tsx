@@ -4,9 +4,9 @@ export const FormError = ({ message }: FormErrorProps) => {
 	if (!message) return null;
 
 	return (
-		<div className="bg-destructive/15 text-destructive flex items-center gap-x-2 rounded-md p-3 text-sm">
-			Warning
-			<p>{message}</p>
+		<div className="bg-destructive-foreground text-destructive flex items-center gap-x-2 rounded-md px-6 py-3 text-sm">
+			<i className="ri-error-warning-line text-md" />
+			<p className="font-semibold">{message}</p>
 		</div>
 	);
 };

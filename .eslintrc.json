@@ -29,6 +29,7 @@
 
 		// allow {} even though it's unsafe but comes handy
 		"@typescript-eslint/no-explicit-any": 0,
+		"@typescript-eslint/prefer-nullish-coalescing": 0,
 		"@typescript-eslint/no-floating-promises": 0,
 		"@typescript-eslint/ban-types": [
 			"error",

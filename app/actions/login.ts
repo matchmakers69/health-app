@@ -25,7 +25,7 @@ export const login = async (values: LoginFormValues, callbackUrl?: string | null
 		await signIn("credentials", {
 			email,
 			password,
-			redirectTo: callbackUrl ?? DEFAULT_LOGIN_REDIRECT,
+			redirectTo: callbackUrl || DEFAULT_LOGIN_REDIRECT,
 		});
 	} catch (error) {
 		if (error instanceof AuthError) {

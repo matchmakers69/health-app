@@ -37,6 +37,14 @@ export const dropDownNav = [
 	},
 ];
 
+export const dropDownNavDashboard = [
+	{
+		id: 1,
+		label: appLinkLabels.SIGN_OUT,
+		href: "",
+	},
+];
+
 export const framerSidebarBackground = {
 	initial: { opacity: 0 },
 	animate: { opacity: 1 },

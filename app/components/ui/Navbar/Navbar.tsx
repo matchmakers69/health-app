@@ -9,6 +9,7 @@ import { Button } from "../Button";
 import { NavbarDropDownMenu } from "../NavbarDropDownMenu";
 import { DropdownNavbarList } from "../DropdownNavbarList";
 import Avatar from "@/public/avatar.jpg";
+import { dropDownNav } from "@/lib/constants";
 import { useScrollHeader } from "@/app/hooks/useStickyHeader";
 import { appLinkLabels, headerLabels } from "@/lib/appData";
 import { routes } from "@/lib/routes";
@@ -64,7 +65,7 @@ function Navbar() {
 						>
 							<div className="shadow-drop-down w-full overflow-hidden rounded-2xl bg-[rgba(255,255,255,.96)]">
 								<div className="inner-drop-down flex flex-col items-start justify-between p-[1rem]">
-									<DropdownNavbarList />
+									<DropdownNavbarList dropDownList={dropDownNav} />
 								</div>
 							</div>
 						</NavbarDropDownMenu>

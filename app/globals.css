@@ -119,9 +119,10 @@ textarea {
 		--secondary-foreground: 56, 59, 80;
 		--accent: 210 40% 96.1%;
 		--accent-foreground: 222.2 47.4% 11.2%;
-
-		--destructive: 0 84.2% 60.2%;
-		--destructive-foreground: 210 40% 98%;
+		--success-foreground: 106 135 124;
+		--success: 0 56 35;
+		--destructive-foreground: 230 180 180;
+		--destructive: 174 14 14;
 
 		--border: 233, 233, 230;
 		--border-input-dark: 71 75 101;
