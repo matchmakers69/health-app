@@ -1,3 +1,4 @@
+import { DashboardContent } from "@/app/components/dashboard/DashboardContent";
 import { auth } from "@/auth";
 
 const Dashboard = async () => {
@@ -6,6 +7,7 @@ const Dashboard = async () => {
 		<div className="text-dark-green">
 			<h3>Dashboard</h3>
 			{JSON.stringify(session)}
+			<DashboardContent />
 		</div>
 	);
 };
