@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Button } from "../Button";
 import { type DropdownNavbarListProps } from "./defs";
 import { appLinkLabels } from "@/lib/appData";
-import { logOut } from "@/app/actions/logOut";
+import { signOut } from "@/auth";
 
 function DropdownNavbarList({ dropDownList }: DropdownNavbarListProps) {
 	return (
@@ -15,10 +15,11 @@ function DropdownNavbarList({ dropDownList }: DropdownNavbarListProps) {
 							className="h-[4.5rem] w-full transition-all duration-300 hover:rounded-2xl hover:bg-[rgba(31,81,156,.2)]"
 						>
 							<form
-								noValidate
-								autoComplete="off"
 								className="flex h-full w-full flex-col justify-center"
-								action={logOut}
+								action={async () => {
+									"use server";
+									await signOut();
+								}}
 							>
 								<Button
 									className="flex h-full w-full flex-col items-start  justify-center px-[1.2rem] py-0 text-[1.6rem] font-normal text-navy"

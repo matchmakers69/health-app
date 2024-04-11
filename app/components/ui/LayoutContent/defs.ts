@@ -1,5 +1,5 @@
 import { type ReactNode } from "react";
 
-export interface AppLayoutContentProps {
+export interface LayoutContentProps {
 	children: ReactNode;
 }

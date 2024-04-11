@@ -1,5 +1,5 @@
 import { type ReactNode } from "react";
 
-export interface MarketingLayoutContentProps {
+export interface HeaderProps {
 	children: ReactNode;
 }

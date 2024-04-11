@@ -12,11 +12,11 @@ export function NavSidebar() {
 			<motion.div
 				{...framerSidebarBackground}
 				aria-hidden="true"
-				className="overlay-menu z-1 fixed bottom-0 left-0 right-0 top-0 h-full w-full bg-[rgba(0,0,0,0.2)] backdrop-blur-sm"
+				className="overlay-menu fixed bottom-0 left-0 right-0 top-0 z-50 flex h-full w-full min-w-[100vh] bg-[rgba(0,0,0,0.2)] backdrop-blur-sm"
 			/>
 			<motion.div
 				{...framerSidebarPanel}
-				className="nav-menu z-2000 fixed bottom-0 left-0 top-0 z-50 flex h-full w-full"
+				className="nav-menu fixed bottom-0 left-0 top-0 z-50 flex h-full w-full"
 				aria-label="Sidebar"
 			>
 				<div className="nav-menu-container z-2 relative flex h-full w-full max-w-[32rem] md:max-w-[34rem] lg:max-w-[36rem]">

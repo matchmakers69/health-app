@@ -30,12 +30,7 @@ function UserMenu() {
 								}}
 							>
 								<DropdownMenu.Item className="relative flex h-[2.5rem] select-none items-center px-[.5rem] pl-[1rem] text-[1.4rem] leading-none outline-none data-[disabled]:pointer-events-none">
-									<form
-										noValidate
-										autoComplete="off"
-										className="flex h-full w-full flex-col justify-center"
-										action={logOut}
-									>
+									<form className="flex h-full w-full flex-col justify-center" action={logOut}>
 										<Button
 											className="flex h-full w-full flex-col items-start  justify-center px-[1.2rem] py-0 text-[1.6rem] font-normal text-navy"
 											variant="ghost"
