@@ -6,13 +6,14 @@ import {
 } from "../components/auth/RegisterForm/validation/registerSchema";
 import { db } from "@/lib/db";
 import { getUserByEmail } from "@/data/user";
+import { pagesText } from "@/lib/appData";
 
 export const register = async (values: RegisterFormValues) => {
 	// server site validation
 	const validatedFields = registerSchema.safeParse(values);
 	if (!validatedFields.success) {
 		return {
-			error: "Invalid fields!",
+			error: pagesText.AUTH_PAGES.REGISTER.invalidFieldsError,
 		};
 	}
 
@@ -22,7 +23,7 @@ export const register = async (values: RegisterFormValues) => {
 
 	if (existingUser) {
 		return {
-			error: "Email already in use!",
+			error: pagesText.AUTH_PAGES.REGISTER.existingUserError,
 		};
 	}
 
