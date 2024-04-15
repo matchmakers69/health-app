@@ -23,7 +23,7 @@ function NavbarDropDownMenu({ button, children, classNames, animation }: NavbarD
 		<div className="relative" ref={ref}>
 			<button
 				type="button"
-				className="flex items-center gap-2 bg-transparent focus:outline-none focus:ring-1 focus:ring-sky-500"
+				className="flex items-center gap-2 bg-transparent focus:outline-none focus:ring-1 focus-visible:ring-white"
 				onClick={handleToggleDropdown}
 			>
 				<div className="logo-img-wrapper flex h-[4rem] w-[4rem] flex-col items-center justify-center overflow-hidden rounded-full">

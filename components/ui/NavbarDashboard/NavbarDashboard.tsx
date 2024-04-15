@@ -21,7 +21,7 @@ export function NavbarDashboard() {
 			<nav className="relative z-10 flex h-full w-full items-center">
 				<div className="site-header-left flex h-full flex-1 items-center">
 					<button
-						className="site-menu-toggle-button-dark inline-flex h-full cursor-pointer items-center p-[1.5rem] pl-0 text-[14px] uppercase focus:outline-none focus:ring-1 focus:ring-[rgba(255,255,255,.8)]"
+						className="site-menu-toggle-button-dark inline-flex h-full cursor-pointer items-center p-[1.5rem] pl-0 text-[14px] uppercase focus:outline-none focus:ring-1 focus-visible:ring-offset-1"
 						onClick={handleToggleSidebar}
 						type="button"
 						aria-label="toggle sidebar"

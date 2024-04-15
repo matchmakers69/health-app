@@ -28,7 +28,7 @@ function Header({ children }: HeaderProps) {
 			<nav className="relative z-10 flex h-full w-full items-center">
 				<div className="site-header-left flex h-full flex-1 items-center">
 					<button
-						className="sidebar-menu-toggle-button border-r-gray-15 inline-flex h-full cursor-pointer items-center p-[1.5rem] text-[14px] uppercase focus:outline-none focus:ring-1 focus:ring-sky-500 md:p-[20px]"
+						className="sidebar-menu-toggle-button border-r-gray-15 inline-flex h-full cursor-pointer items-center p-[1.5rem] text-[14px] uppercase focus:outline-none focus:ring-1 focus-visible:ring-offset-1 md:p-[20px]"
 						onClick={handleOpenSidebarMenu}
 						type="button"
 						aria-label="toggle sidebar"
