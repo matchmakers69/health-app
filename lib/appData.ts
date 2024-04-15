@@ -10,6 +10,26 @@ export const headerLabels = {
 	MENU: "Menu",
 };
 
+export const validationRules = {
+	REGISTER: {
+		nameRequired: "Name is required",
+		emailRequired: "Email is required",
+		nameMaxLength: "Name must be a maximun 30 characters",
+		invalidEmailAddress: "Invalid email address",
+		nameOneSpace: "Spaces are not allowed",
+		passwordMin: "Password must be at least 6 characters long",
+		passwordMax: "Password must be a maximun 30 characters",
+		passwordUppercase: "Must conatain one uppercase character",
+		passwordWithNumber: "Must contains one number",
+		passwordWithSpecialCharacter: "Must contain one special character",
+	},
+	LOGIN: {
+		emailRequired: "Email is required",
+		invalidEmailAddress: "Invalid email address",
+		passwordMin: "Password must be at least 2 characters long",
+	},
+};
+
 export const pagesText = {
 	AUTH_PAGES: {
 		LOGIN: {

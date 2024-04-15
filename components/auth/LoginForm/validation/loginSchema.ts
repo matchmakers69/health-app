@@ -1,8 +1,12 @@
 import { z } from "zod";
+import { validationRules } from "@/lib/appData";
 
 export const loginSchema = z.object({
-	email: z.string().min(1, { message: "Email is required" }).email("Invalid email address"),
-	password: z.string().min(2, { message: "Password must be at least 2 characters" }),
+	email: z
+		.string()
+		.min(1, { message: validationRules.LOGIN.emailRequired })
+		.email(validationRules.LOGIN.invalidEmailAddress),
+	password: z.string().min(2, { message: validationRules.LOGIN.passwordMin }),
 });
 
 export type LoginFormValues = z.infer<typeof loginSchema>;
