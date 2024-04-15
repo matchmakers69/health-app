@@ -1,9 +1,9 @@
 import { Suspense } from "react";
-import { AppLayoutContextProvider } from "../context/AppLayoutContext";
-import { FooterMarketing } from "../components/ui/FooterMarketing";
-import { Navbar } from "../components/ui/Navbar";
 import Loading from "../loading";
-import { LayoutContent } from "../components/ui/LayoutContent";
+import { FooterMarketing } from "@/components/ui/FooterMarketing";
+import { LayoutContent } from "@/components/ui/LayoutContent";
+import { Navbar } from "@/components/ui/Navbar";
+import { AppLayoutContextProvider } from "@/context/AppLayoutContext";
 
 export default function MarketingLayout({ children }: { children: React.ReactNode }) {
 	return (

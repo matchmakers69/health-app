@@ -3,7 +3,7 @@
 import { NavbarDashboard } from "../NavbarDashboard";
 import { DashboardFooterShape } from "./DashboardFooterShape";
 import { type DashboardLayoutContentProps } from "./defs";
-import { useDashboardLayoutContext } from "@/app/context/DashboardLayoutContext";
+import { useDashboardLayoutContext } from "@/context/DashboardLayoutContext";
 
 function DashboardLayoutContent({ children }: DashboardLayoutContentProps) {
 	const { isSidebarInView } = useDashboardLayoutContext();

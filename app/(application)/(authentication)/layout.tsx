@@ -1,9 +1,9 @@
 import { Suspense } from "react";
 import Loading from "./loading";
-import { FooterAuth } from "@/app/components/ui/FooterAuth/FooterAuth";
-import { AppLayoutContextProvider } from "@/app/context/AppLayoutContext";
-import { Navbar } from "@/app/components/ui/Navbar";
-import { LayoutContent } from "@/app/components/ui/LayoutContent";
+import { FooterAuth } from "@/components/ui/FooterAuth";
+import { LayoutContent } from "@/components/ui/LayoutContent";
+import { Navbar } from "@/components/ui/Navbar";
+import { AppLayoutContextProvider } from "@/context/AppLayoutContext";
 
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
 	return (

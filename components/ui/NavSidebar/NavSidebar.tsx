@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { NavLink } from "../NavLink";
 import { CloseSidebarButton } from "../CloseSidebarButton/CloseSidebarButton";
 import { framerSidebarBackground, framerSidebarPanel, navigation, framerText } from "@/lib/constants";
-import { useAppLayoutContext } from "@/app/context/AppLayoutContext";
+import { useAppLayoutContext } from "@/context/AppLayoutContext";
 
 export function NavSidebar() {
 	const { handleCloseSidebarMenu } = useAppLayoutContext();

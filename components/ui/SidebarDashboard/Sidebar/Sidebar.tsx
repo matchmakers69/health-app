@@ -5,7 +5,7 @@ import { CloseSidebarButton } from "../../CloseSidebarButton/CloseSidebarButton"
 import { Logo } from "../../Logo";
 import { type SidebarProps } from "./defs";
 import { routes } from "@/lib/routes";
-import { useDashboardLayoutContext } from "@/app/context/DashboardLayoutContext";
+import { useDashboardLayoutContext } from "@/context/DashboardLayoutContext";
 
 function Sidebar({ children }: SidebarProps) {
 	const { isSidebarInView, dispatch } = useDashboardLayoutContext();

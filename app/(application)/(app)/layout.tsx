@@ -1,6 +1,6 @@
-import { DashboardLayoutContent } from "@/app/components/ui/DashboardLayoutContent";
-import { SidebarDashboard } from "@/app/components/ui/SidebarDashboard";
-import { DashboardLayoutContextProvider } from "@/app/context/DashboardLayoutContext";
+import { DashboardLayoutContent } from "@/components/ui/DashboardLayoutContent";
+import { SidebarDashboard } from "@/components/ui/SidebarDashboard";
+import { DashboardLayoutContextProvider } from "@/context/DashboardLayoutContext";
 
 export default function ApplicationLayout({ children }: { children: React.ReactNode }) {
 	return (

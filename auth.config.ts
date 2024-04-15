@@ -4,7 +4,7 @@ import Github from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
 
 import type { NextAuthConfig } from "next-auth";
-import { loginSchema } from "@/app/components/auth/LoginForm/validation/loginSchema";
+import { loginSchema } from "./components/auth/LoginForm/validation/loginSchema";
 import { getUserByEmail } from "@/data/user";
 
 export default {

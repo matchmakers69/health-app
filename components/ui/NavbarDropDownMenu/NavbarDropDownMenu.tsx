@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { type NavbarDropDownMenuProps } from "./defs";
 import { cn } from "@/lib/utils";
-import { useClickOutside } from "@/app/hooks/useClickOutside";
+import { useClickOutside } from "@/hooks/useClickOutside";
 
 function NavbarDropDownMenu({ button, children, classNames, animation }: NavbarDropDownMenuProps) {
 	const [isDropdownOpened, setIsDropdownOpened] = useState(false);

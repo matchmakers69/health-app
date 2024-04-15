@@ -2,11 +2,11 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { useState, useTransition } from "react";
-import { register as registerUser } from "@/app/actions/register";
+import { register as registerUser } from "@/actions/register";
 import {
 	type RegisterFormValues,
 	registerSchema,
-} from "@/app/components/auth/RegisterForm/validation/registerSchema";
+} from "@/components/auth/RegisterForm/validation/registerSchema";
 
 export const useRegister = () => {
 	const [isPending, startTransition] = useTransition();

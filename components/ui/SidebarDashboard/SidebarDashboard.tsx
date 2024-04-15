@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react";
 import { Button } from "../Button";
 import { Sidebar } from "./Sidebar";
 import { appLinkLabels } from "@/lib/appData";
-import { logout } from "@/app/actions/signout";
+import { logout } from "@/actions/signout";
 
 function SidebarDashboard() {
 	const { status } = useSession();

@@ -3,7 +3,7 @@
 import { AnimatePresence } from "framer-motion";
 import { NavSidebar } from "../NavSidebar";
 import { type LayoutContentProps } from "./defs";
-import { useAppLayoutContext } from "@/app/context/AppLayoutContext";
+import { useAppLayoutContext } from "@/context/AppLayoutContext";
 
 function LayoutContent({ children }: LayoutContentProps) {
 	const { isNavInView } = useAppLayoutContext();

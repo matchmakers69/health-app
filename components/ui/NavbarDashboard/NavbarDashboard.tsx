@@ -1,7 +1,7 @@
 "use client";
 
-import { useDashboardLayoutContext } from "@/app/context/DashboardLayoutContext";
-import { useScrollHeader } from "@/app/hooks/useStickyHeader";
+import { useDashboardLayoutContext } from "@/context/DashboardLayoutContext";
+import { useScrollHeader } from "@/hooks/useScrollHeader";
 
 export function NavbarDashboard() {
 	const isStickyHeader = useScrollHeader();

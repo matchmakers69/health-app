@@ -1,5 +1,5 @@
-import { RegisterForm } from "@/app/components/auth/RegisterForm";
-import { Heading } from "@/app/components/ui/Heading";
+import { RegisterForm } from "@/components/auth/RegisterForm";
+import { Heading } from "@/components/ui/Heading";
 
 function Register() {
 	return (

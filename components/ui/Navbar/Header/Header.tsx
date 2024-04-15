@@ -5,9 +5,9 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 import { Logo } from "../../Logo";
 import { type HeaderProps } from "./defs";
-import { useAppLayoutContext } from "@/app/context/AppLayoutContext";
-import { useScrollHeader } from "@/app/hooks/useStickyHeader";
 import { headerLabels } from "@/lib/appData";
+import { useAppLayoutContext } from "@/context/AppLayoutContext";
+import { useScrollHeader } from "@/hooks/useScrollHeader";
 
 function Header({ children }: HeaderProps) {
 	const { isNavInView, handleCloseSidebarMenu, handleOpenSidebarMenu } = useAppLayoutContext();

@@ -1,5 +1,5 @@
-import { LoginForm } from "@/app/components/auth/LoginForm";
-import { Heading } from "@/app/components/ui/Heading";
+import { LoginForm } from "@/components/auth/LoginForm";
+import { Heading } from "@/components/ui/Heading";
 import { pagesText } from "@/lib/appData";
 
 function Login() {

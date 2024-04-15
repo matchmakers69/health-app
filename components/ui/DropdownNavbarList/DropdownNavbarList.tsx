@@ -3,8 +3,12 @@ import { Button } from "../Button";
 import { type DropdownNavbarListProps } from "./defs";
 import { appLinkLabels } from "@/lib/appData";
 import { signOut } from "@/auth";
+import { routes } from "@/lib/routes";
 
 function DropdownNavbarList({ dropDownList }: DropdownNavbarListProps) {
+	const handleSignOut = async () => {
+		await signOut({ redirectTo: routes.LOGIN });
+	};
 	return (
 		<ul className="drop-down-list w-full">
 			{dropDownList.map((dropDownLink) => {

@@ -2,9 +2,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { useState, useTransition } from "react";
 import { useSearchParams } from "next/navigation";
-import { login } from "@/app/actions/login";
-import { type LoginFormValues, loginSchema } from "@/app/components/auth/LoginForm/validation/loginSchema";
 import { pagesText } from "@/lib/appData";
+import { login } from "@/actions/login";
+import { type LoginFormValues, loginSchema } from "@/components/auth/LoginForm/validation/loginSchema";
 
 export const useLogin = () => {
 	const [isPending, startTransition] = useTransition();
