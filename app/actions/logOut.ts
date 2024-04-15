@@ -4,7 +4,7 @@ import { AuthError } from "next-auth";
 import { signOut } from "@/auth";
 import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 
-export async function logOut() {
+export async function logout() {
 	try {
 		await signOut({
 			redirectTo: DEFAULT_LOGIN_REDIRECT,

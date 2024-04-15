@@ -2,6 +2,7 @@ import { IBM_Plex_Sans } from "next/font/google";
 import "remixicon/fonts/remixicon.css";
 import "./globals.css";
 import { type Metadata } from "next/types";
+import SessionProvider from "./components/providers/SessionProvider";
 
 const IbmPlex = IBM_Plex_Sans({
 	subsets: ["latin"],
@@ -37,7 +38,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${IbmPlex.className}`}>{children}</body>
+			<body className={`${IbmPlex.className}`}>
+				<SessionProvider>{children}</SessionProvider>
+			</body>
 		</html>
 	);
 }
