@@ -3,8 +3,8 @@
 import { useSession } from "next-auth/react";
 import { Button } from "../Button";
 import { Sidebar } from "./Sidebar";
-import { logout } from "@/app/actions/logout";
 import { appLinkLabels } from "@/lib/appData";
+import { logout } from "@/app/actions/signout";
 
 function SidebarDashboard() {
 	const { status } = useSession();
