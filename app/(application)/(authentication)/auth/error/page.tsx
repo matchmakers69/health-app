@@ -1,5 +1,5 @@
-import { ErrorCard } from "@/app/components/auth/ErrorCard";
-import { Heading } from "@/app/components/ui/Heading";
+import { ErrorCard } from "@/components/auth/ErrorCard";
+import { Heading } from "@/components/ui/Heading";
 import { pagesText } from "@/lib/appData";
 
 export default function AuthErrorPage() {
