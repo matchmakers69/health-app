@@ -1,3 +1,5 @@
+import { routes } from "./routes";
+
 export const appLinkLabels = {
 	HOME: "Home",
 	LOGIN: "Login",
@@ -10,6 +12,24 @@ export const headerLabels = {
 	MENU: "Menu",
 };
 
+export const actionMessages = {
+	REGISTER: {
+		emailConfirmation: "Thank you. Please check your email. We just sent a verification link.",
+	},
+	LOGIN: {
+		emailNotExist: "Email does not exist",
+		confirmationEmailSent: "Confirmation email sent! Please check your inbox.",
+	},
+	VERIFICATION: {
+		tokenNonExist: "Token does not exist!",
+		tokenHasExpired: "Token has expired!",
+		userNonExist: "Email does not exist!",
+		emailVerified: "Email verified!",
+		missingToken: "Missing token!",
+		errorMsg: "Something went wrong!",
+	},
+};
+
 export const validationRules = {
 	REGISTER: {
 		nameRequired: "Name is required",
@@ -19,9 +39,9 @@ export const validationRules = {
 		nameOneSpace: "Spaces are not allowed",
 		passwordMin: "Password must be at least 6 characters long",
 		passwordMax: "Password must be a maximun 30 characters",
-		passwordUppercase: "Must conatain one uppercase character",
-		passwordWithNumber: "Must contains one number",
-		passwordWithSpecialCharacter: "Must contain one special character",
+		passwordUppercase: "Password must conatain an uppercase character",
+		passwordWithNumber: "Password must contain a number",
+		passwordWithSpecialCharacter: "Password must contain a special character",
 	},
 	LOGIN: {
 		emailRequired: "Email is required",
@@ -43,6 +63,13 @@ export const pagesText = {
 			backButtonLabel: "Already have an account?",
 			existingUserError: "Email already in use!",
 			invalidFieldsError: "Invalid fields!",
+		},
+
+		VERIFICATION: {
+			title: "User verification",
+			subtitle: "Confirming your verification",
+			backButtonLabel: "Back to login",
+			backButtonHref: routes.LOGIN,
 		},
 
 		ERROR: {

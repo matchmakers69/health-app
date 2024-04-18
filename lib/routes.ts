@@ -4,4 +4,5 @@ export const routes = {
 	REGISTER: "/auth/register",
 	DASHBOARD: "/dashboard",
 	ERROR: "/auth/error",
+	NEW_VERIFICATION: "/auth/new-verification",
 };

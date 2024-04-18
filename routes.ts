@@ -5,7 +5,7 @@ import { routes } from "./lib/routes";
  * These routes do not require authentication
  * @type {string[]}
  */
-export const publicRoutes = [routes.HOME];
+export const publicRoutes = [routes.HOME, routes.NEW_VERIFICATION];
 
 /**
  * An array of routes that are used for authentication
@@ -18,7 +18,6 @@ export const authRoutes = [routes.LOGIN, routes.REGISTER, routes.ERROR];
  * The prefix for API authentication routes
  * @type {string}
  */
-
 export const apiAuthPrefix = "/api/auth";
 
 /**

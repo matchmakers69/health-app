@@ -4,6 +4,10 @@ import { AuthError } from "next-auth";
 import { type LoginFormValues, loginSchema } from "../components/auth/LoginForm/validation/loginSchema";
 import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 import { signIn } from "@/auth";
+import { generateVerificationToken } from "@/lib/tokens";
+import { getUserByEmail } from "@/data/user";
+import { actionMessages } from "@/lib/appData";
+import { sendVerificationEmail } from "@/lib/mail";
 
 export const login = async (values: LoginFormValues, callbackUrl?: string | null) => {
 	// server site validation
@@ -14,12 +18,19 @@ export const login = async (values: LoginFormValues, callbackUrl?: string | null
 	}
 
 	const { email, password } = validatedFields.data;
-	// const existingUser = await getUserByEmail(email);
+	const existingUser = await getUserByEmail(email);
 
-	// if (!existingUser?.emailVerified) {
-	// 	// TODO
-	// 	return { success: "Email was sent! Waiting for verification!" };
-	// }
+	if (!existingUser?.email || !existingUser.password) {
+		return { error: actionMessages.LOGIN.emailNotExist };
+	}
+
+	if (!existingUser.emailVerified) {
+		const verificationToken = await generateVerificationToken(existingUser.email);
+
+		await sendVerificationEmail(verificationToken.email, verificationToken.token);
+
+		return { success: actionMessages.LOGIN.confirmationEmailSent };
+	}
 
 	try {
 		await signIn("credentials", {

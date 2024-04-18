@@ -38,13 +38,11 @@ export const useLogin = () => {
 					reset();
 					setError(data?.error);
 				}
-				reset();
 
-				// TODO fix when existing user checked
-				// if (data?.success) {
-				// 	reset();
-				// 	setSuccess(data.success);
-				// }
+				if (data?.success) {
+					reset();
+					setSuccess(data.success);
+				}
 			});
 		});
 	};

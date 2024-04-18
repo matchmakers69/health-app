@@ -21,7 +21,7 @@ export const CardWrapper = ({
 			<CardHeader>
 				<Header label={headerLabel} />
 			</CardHeader>
-			<CardContent>{children}</CardContent>
+			<CardContent className="mb-6">{children}</CardContent>
 			{showSocial && (
 				<CardFooter className="mb-6">
 					<Social />
