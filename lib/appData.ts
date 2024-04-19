@@ -28,6 +28,12 @@ export const actionMessages = {
 		missingToken: "Missing token!",
 		errorMsg: "Something went wrong!",
 	},
+
+	RESET_PASSWORD: {
+		emailNotFound: "Email not found!",
+		invalidEmailAddress: "Invalid email address",
+		resetEmailSent: "Reset email sent!",
+	},
 };
 
 export const validationRules = {
@@ -48,6 +54,10 @@ export const validationRules = {
 		invalidEmailAddress: "Invalid email address",
 		passwordMin: "Password must be at least 2 characters long",
 	},
+	RESET_PASSWORD: {
+		emailRequired: "Email is required",
+		invalidEmailAddress: "Invalid email address",
+	},
 };
 
 export const pagesText = {
@@ -56,6 +66,8 @@ export const pagesText = {
 			title: "Login",
 			subtitle: "Welcome to That Festival Site!",
 			noAccountText: "Don't have an account?",
+			signInButton: "Sign In",
+			forgotPasswordButtonLabel: "Forgot password?",
 		},
 
 		REGISTER: {
@@ -70,6 +82,14 @@ export const pagesText = {
 			subtitle: "Confirming your verification",
 			backButtonLabel: "Back to login",
 			backButtonHref: routes.LOGIN,
+		},
+
+		PASSWORD_RESET: {
+			title: "Password reset",
+			forgotPassword: "Forgot your password?",
+			backButtonLabel: "Back to login",
+			backButtonHref: routes.LOGIN,
+			buttonSubmitReset: "Send reset email",
 		},
 
 		ERROR: {

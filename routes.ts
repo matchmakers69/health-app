@@ -12,7 +12,7 @@ export const publicRoutes = [routes.HOME, routes.NEW_VERIFICATION];
  * These routes will redirect logged users to /dashboard
  * @type {string[]}
  */
-export const authRoutes = [routes.LOGIN, routes.REGISTER, routes.ERROR];
+export const authRoutes = [routes.LOGIN, routes.REGISTER, routes.ERROR, routes.PASSWORD_RESET];
 
 /**
  * The prefix for API authentication routes

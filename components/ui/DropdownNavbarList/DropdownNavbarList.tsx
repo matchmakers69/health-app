@@ -20,7 +20,7 @@ function DropdownNavbarList({ dropDownList }: DropdownNavbarListProps) {
 							className="h-[4.5rem] w-full transition-all duration-300 hover:rounded-2xl hover:bg-[rgba(31,81,156,.2)]"
 						>
 							<Button
-								className="flex h-full w-full flex-col items-start justify-center px-[1.2rem] py-0  text-[1.6rem] font-normal text-navy focus:outline-none focus:ring-1 focus-visible:ring-sky-300"
+								className="flex h-full w-full flex-col items-start justify-center px-[1.2rem] py-0  text-[1.6rem] font-normal text-navy focus:outline-none focus:ring-1 focus-visible:ring-ring"
 								variant="ghost"
 								onClick={handleSignOut}
 								type="button"
@@ -36,7 +36,7 @@ function DropdownNavbarList({ dropDownList }: DropdownNavbarListProps) {
 						className="h-[4.5rem] w-full transition-all duration-300 hover:rounded-2xl hover:bg-[rgba(31,81,156,.2)]"
 					>
 						<Button
-							className="flex h-full w-full flex-col items-start justify-center px-[1.2rem] py-0  text-[1.6rem] font-normal text-navy focus:outline-none focus:ring-1 focus-visible:ring-sky-300"
+							className="flex h-full w-full flex-col items-start justify-center px-[1.2rem] py-0  text-[1.6rem] font-normal text-navy focus:outline-none focus:ring-1 focus-visible:ring-ring"
 							variant="ghost"
 							type="button"
 							asChild

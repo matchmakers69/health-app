@@ -6,7 +6,12 @@ import { type BackButtonProps } from "./defs";
 
 export const BackButton = ({ href, label }: BackButtonProps) => {
 	return (
-		<Button variant="link" className="w-full font-normal focus-visible:ring-sky-500" size="sm" asChild>
+		<Button
+			variant="link"
+			className="w-full font-normal focus:outline-none focus:ring-1 focus-visible:ring-ring"
+			size="sm"
+			asChild
+		>
 			<Link href={href}>{label}</Link>
 		</Button>
 	);

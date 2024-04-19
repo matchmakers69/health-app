@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Button } from "../../ui/Button";
 import { FormError } from "../../ui/FormError";
 import { FormSuccess } from "../../ui/FormSuccess";
@@ -19,7 +20,7 @@ export function LoginForm() {
 			showSocial
 		>
 			<form autoComplete="off" noValidate onSubmit={submitLogin}>
-				<div className="mb-[4rem] flex w-full flex-col gap-[3rem]">
+				<div className="mb-3 flex w-full flex-col gap-[3rem]">
 					<Input
 						type="email"
 						className="w-full"
@@ -35,7 +36,11 @@ export function LoginForm() {
 						error={errors.password}
 					/>
 				</div>
-
+				<div className="mb-8 text-center">
+					<Button className="px-0 font-normal" asChild variant="link">
+						<Link href={routes.PASSWORD_RESET}>{pagesText.AUTH_PAGES.LOGIN.forgotPasswordButtonLabel}</Link>
+					</Button>
+				</div>
 				<div className="mb-8">
 					<FormError message={error || urlError} />
 					<FormSuccess message={success} />
@@ -48,7 +53,7 @@ export function LoginForm() {
 						disabled={!isDirty || isSubmitting || isPending}
 						className="w-full"
 					>
-						Sign in
+						{pagesText.AUTH_PAGES.LOGIN.signInButton}
 					</Button>
 				</div>
 			</form>
