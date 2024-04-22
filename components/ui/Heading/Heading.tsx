@@ -20,7 +20,7 @@ export function Heading({ title, subtitle }: HeadingProps) {
 	return (
 		<div className="heading-slogans relative flex flex-col items-center justify-center gap-2 pb-pb-2xl">
 			<h1
-				className={`${rubik.className} text-lg font-extrabold uppercase leading-[1.2] md:text-lg lg:text-2xl xl:text-3xl`}
+				className={`${rubik.className} text-center text-lg font-extrabold uppercase leading-[1.2] md:text-lg lg:text-2xl xl:text-3xl`}
 			>
 				{title}
 			</h1>

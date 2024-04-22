@@ -32,7 +32,16 @@ export const actionMessages = {
 	RESET_PASSWORD: {
 		emailNotFound: "Email not found!",
 		invalidEmailAddress: "Invalid email address",
-		resetEmailSent: "Reset email sent!",
+		resetEmailSent: "Reset email sent! Check your inbox!",
+	},
+
+	NEW_PASSWORD: {
+		missingToken: "Missing token!",
+		invalidFields: "Invalid fields!",
+		invalidToken: "Invalid token!",
+		tokenExpired: "Token has expired!",
+		emailNotExist: "Email does not exist!",
+		successPasswordUpdated: "Congrats!, Your password has been updated!",
 	},
 };
 
@@ -85,8 +94,8 @@ export const pagesText = {
 		},
 
 		PASSWORD_RESET: {
-			title: "Password reset",
-			forgotPassword: "Forgot your password?",
+			title: "Forgot your password?",
+			forgotPassword: "Enter your email to reset your password",
 			backButtonLabel: "Back to login",
 			backButtonHref: routes.LOGIN,
 			buttonSubmitReset: "Send reset email",
@@ -97,6 +106,11 @@ export const pagesText = {
 			cardTitle: "Oops! Something went wrong!",
 			backButtonLabel: "Back to login",
 			OAuthAccountError: "Email already in use. Please login with form.",
+		},
+		NEW_PASSWORD: {
+			title: "Password reset",
+			newPasswordCardTitle: "Enter a new password",
+			buttonSubmitResetPassword: "Reset password",
 		},
 	},
 };

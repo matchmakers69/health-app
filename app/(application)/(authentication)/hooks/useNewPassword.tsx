@@ -1,10 +1,16 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { useState, useTransition } from "react";
-import { type ResetFormValues, resetSchema } from "@/components/auth/ResetForm/validation/resetSchema";
-import { resetPassword } from "@/actions/reset-password";
+import { useSearchParams } from "next/navigation";
+import {
+	newPasswordSchema,
+	type NewPasswordFormValues,
+} from "@/components/auth/NewPasswordForm/validation/newPasswordSchema";
+import { newPassword } from "@/actions/new-password";
 
-export const useResetPassword = () => {
+export const useNewPassword = () => {
+	const searchParams = useSearchParams();
+	const token = searchParams.get("token");
 	const [isPending, startTransition] = useTransition();
 	const [success, setSuccess] = useState<string | undefined>("");
 	const [error, setError] = useState<string | undefined>("");
@@ -14,19 +20,19 @@ export const useResetPassword = () => {
 		reset,
 		handleSubmit,
 		formState: { errors, isDirty, isSubmitting },
-	} = useForm<ResetFormValues>({
+	} = useForm<NewPasswordFormValues>({
 		mode: "onSubmit",
-		resolver: zodResolver(resetSchema),
+		resolver: zodResolver(newPasswordSchema),
 		defaultValues: {
-			email: "",
+			password: "",
 		},
 	});
 
-	const handleResetPasswordSubmit: SubmitHandler<ResetFormValues> = (values) => {
+	const handleNewPasswordSubmit: SubmitHandler<NewPasswordFormValues> = (values) => {
 		setSuccess("");
 		setError("");
 		startTransition(() => {
-			resetPassword(values).then((data) => {
+			newPassword(values, token).then((data) => {
 				if (data?.error) {
 					reset();
 					setError(data?.error);
@@ -40,10 +46,10 @@ export const useResetPassword = () => {
 		});
 	};
 
-	const resetPasswordSubmit = handleSubmit(handleResetPasswordSubmit);
+	const newPasswordSubmit = handleSubmit(handleNewPasswordSubmit);
 
 	return {
-		resetPasswordSubmit,
+		newPasswordSubmit,
 		register,
 		errors,
 		isDirty,

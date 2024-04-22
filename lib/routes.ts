@@ -4,7 +4,7 @@ export const routes = {
 	REGISTER: "/auth/register",
 	PASSWORD_RESET: "/auth/reset",
 	NEW_PASSWORD: "/auth/new-password",
+	NEW_VERIFICATION: "/auth/new-verification",
 	DASHBOARD: "/dashboard",
 	ERROR: "/auth/error",
-	NEW_VERIFICATION: "/auth/new-verification",
 };
