@@ -19,6 +19,11 @@ export const actionMessages = {
 	LOGIN: {
 		emailNotExist: "Email does not exist",
 		confirmationEmailSent: "Confirmation email sent! Please check your inbox.",
+		invalidFields: "Invalid fields!",
+		invalidCredentials: "Invalid credentials!",
+		loginWentWrong: "Something went wrong with login!",
+		invalidCode: "Invalid code!",
+		codeExpired: "Code has expired!",
 	},
 	VERIFICATION: {
 		tokenNonExist: "Token does not exist!",
@@ -62,6 +67,9 @@ export const validationRules = {
 		emailRequired: "Email is required",
 		invalidEmailAddress: "Invalid email address",
 		passwordMin: "Password must be at least 2 characters long",
+		invalidCodeFormat: "Code must include six digits",
+		codeMin: "Code must be at least 6 digits",
+		codeMax: "Code cannot be longer then 6 digits",
 	},
 	RESET_PASSWORD: {
 		emailRequired: "Email is required",
@@ -75,8 +83,10 @@ export const pagesText = {
 			title: "Login",
 			subtitle: "Welcome to That Festival Site!",
 			noAccountText: "Don't have an account?",
-			signInButton: "Sign In",
+			signInButton: "Login",
+			confirmButtonLabel: "Confirm",
 			forgotPasswordButtonLabel: "Forgot password?",
+			loginFormError: "Something went wrong with your login request!",
 		},
 
 		REGISTER: {
@@ -94,8 +104,8 @@ export const pagesText = {
 		},
 
 		PASSWORD_RESET: {
-			title: "Forgot your password?",
-			forgotPassword: "Enter your email to reset your password",
+			title: "Forgot password?",
+			forgotPassword: "We'll send you a link to create a new password.",
 			backButtonLabel: "Back to login",
 			backButtonHref: routes.LOGIN,
 			buttonSubmitReset: "Send reset email",

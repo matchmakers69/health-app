@@ -22,9 +22,8 @@ const config: Config = {
 				"input-height": "clamp(3rem,2.5rem + 4vw,6rem)",
 			},
 			fontSize: {
-				xs: "1.4rem",
 				base: "1.4rem",
-				sm: "1.4rem",
+				sm: "1.5rem",
 				md: "1.6rem",
 				"md-xl": "1.8rem",
 				"md-2xl": "3rem",
@@ -54,6 +53,7 @@ const config: Config = {
 				"foreground-green": "rgb(var(--foreground-green))",
 				"destructive-foreground": "rgb(var(--destructive-foreground))",
 				destructive: "rgb(var(--destructive))",
+				error: "rgb(var(--error))",
 				"success-foreground": "rgb(var(--success-foreground))",
 				success: "rgb(var(--success))",
 				"border-bottom-light": "rgba(var(--border-bottom-light))",

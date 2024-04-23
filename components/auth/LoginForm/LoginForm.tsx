@@ -11,8 +11,18 @@ import { useLogin } from "@/app/(application)/(authentication)/hooks/useLogin";
 import { routes } from "@/lib/routes";
 
 export function LoginForm() {
-	const { submitLogin, register, errors, isDirty, isSubmitting, isPending, success, error, urlError } =
-		useLogin();
+	const {
+		submitLogin,
+		register,
+		errors,
+		isDirty,
+		isSubmitting,
+		isPending,
+		success,
+		error,
+		urlError,
+		showTwoFactor,
+	} = useLogin();
 	return (
 		<CardWrapper
 			backButtonLabel={pagesText.AUTH_PAGES.LOGIN.noAccountText}
@@ -20,22 +30,37 @@ export function LoginForm() {
 			showSocial
 		>
 			<form autoComplete="off" noValidate onSubmit={submitLogin}>
-				<div className="mb-3 flex w-full flex-col gap-[3rem]">
-					<Input
-						type="email"
-						className="w-full"
-						placeholder="Email"
-						{...register("email")}
-						error={errors.email}
-					/>
-					<Input
-						className="w-full"
-						type="password"
-						placeholder="Password"
-						{...register("password")}
-						error={errors.password}
-					/>
-				</div>
+				{showTwoFactor && (
+					<div className="mb-3">
+						<Input
+							className="w-full"
+							label="Two factor code"
+							type="text"
+							placeholder="123456"
+							{...register("code")}
+							error={errors.code}
+							disabled={!showTwoFactor} // Disable input when showTwoFactor is true
+						/>
+					</div>
+				)}
+				{!showTwoFactor && (
+					<div className="mb-3 flex w-full flex-col gap-[3rem]">
+						<Input
+							type="email"
+							className="w-full"
+							placeholder="Email"
+							{...register("email")}
+							error={errors.email}
+						/>
+						<Input
+							className="w-full"
+							type="password"
+							placeholder="Password"
+							{...register("password")}
+							error={errors.password}
+						/>
+					</div>
+				)}
 				<div className="mb-8 text-center">
 					<Button className="px-0 font-normal" asChild variant="link">
 						<Link href={routes.PASSWORD_RESET}>{pagesText.AUTH_PAGES.LOGIN.forgotPasswordButtonLabel}</Link>
@@ -53,7 +78,9 @@ export function LoginForm() {
 						disabled={!isDirty || isSubmitting || isPending}
 						className="w-full"
 					>
-						{pagesText.AUTH_PAGES.LOGIN.signInButton}
+						{showTwoFactor
+							? pagesText.AUTH_PAGES.LOGIN.confirmButtonLabel
+							: pagesText.AUTH_PAGES.LOGIN.signInButton}
 					</Button>
 				</div>
 			</form>

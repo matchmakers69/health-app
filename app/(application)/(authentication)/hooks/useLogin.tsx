@@ -10,6 +10,8 @@ export const useLogin = () => {
 	const [isPending, startTransition] = useTransition();
 	const [success, setSuccess] = useState<string | undefined>("");
 	const [error, setError] = useState<string | undefined>("");
+	const [showTwoFactor, setShowTwoFactor] = useState(false);
+
 	const searchParams = useSearchParams();
 	const urlError =
 		searchParams.get("error") === "OAuthAccountNotLinked"
@@ -23,27 +25,31 @@ export const useLogin = () => {
 	} = useForm<LoginFormValues>({
 		mode: "onSubmit",
 		resolver: zodResolver(loginSchema),
-		defaultValues: {
-			email: "",
-			password: "",
-		},
+		defaultValues: {},
 	});
 
 	const handleLoginSubmit: SubmitHandler<LoginFormValues> = (values) => {
 		setSuccess("");
 		setError("");
 		startTransition(() => {
-			login(values).then((data) => {
-				if (data?.error) {
-					reset();
-					setError(data?.error);
-				}
+			login(values)
+				.then((data) => {
+					if (data?.error) {
+						reset();
+						setError(data?.error);
+					}
 
-				if (data?.success) {
-					reset();
-					setSuccess(data.success);
-				}
-			});
+					if (data?.success) {
+						reset();
+						setSuccess(data.success);
+					}
+					if (data?.twoFactor) {
+						setShowTwoFactor(true);
+					}
+				})
+				.catch(() => {
+					setError(pagesText.AUTH_PAGES.LOGIN.loginFormError);
+				});
 		});
 	};
 
@@ -59,5 +65,6 @@ export const useLogin = () => {
 		success,
 		error,
 		urlError,
+		showTwoFactor,
 	};
 };

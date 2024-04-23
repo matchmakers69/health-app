@@ -3,6 +3,7 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import { type UserRole } from "@prisma/client";
 import { getUserById } from "./data/user";
 import { routes } from "./lib/routes";
+import { getTwoFactorConfirmationByUserId } from "./data/two-factor-confirmation";
 import { db } from "@/lib/db";
 import authConfig from "@/auth.config";
 
@@ -46,7 +47,18 @@ export const {
 				// Prevent signin without email verification
 				if (!existingUser?.emailVerified) return false;
 
-				// TODO: Add 2FA check
+				// 2FA check - here below we prevent user to login without having 2FA enabled
+				if (existingUser.isTwoFactorEnabled) {
+					const twoFactorConfirmation = await getTwoFactorConfirmationByUserId(existingUser.id);
+
+					if (!twoFactorConfirmation) return false;
+					// Delete two factor confirmation for next sign in
+					await db.twoFactorConfirmation.delete({
+						where: {
+							id: twoFactorConfirmation.id,
+						},
+					});
+				}
 				return true; // By default you allow users to sign in
 			} else {
 				return false; // Handle the case where user is undefined
