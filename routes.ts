@@ -9,7 +9,7 @@ export const publicRoutes = [routes.HOME, routes.NEW_VERIFICATION];
 
 /**
  * An array of routes that are used for authentication
- * These routes will redirect logged users to /dashboard
+ * These routes will redirect logged users to settings
  * @type {string[]}
  */
 export const authRoutes = [
@@ -30,4 +30,4 @@ export const apiAuthPrefix = "/api/auth";
  * The default redirect path after logging in
  * @type {string}
  */
-export const DEFAULT_LOGIN_REDIRECT = routes.DASHBOARD;
+export const DEFAULT_LOGIN_REDIRECT = routes.SETTINGS;

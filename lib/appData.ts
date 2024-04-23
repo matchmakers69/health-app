@@ -4,7 +4,7 @@ export const appLinkLabels = {
 	HOME: "Home",
 	LOGIN: "Login",
 	REGISTER: "Register",
-	DASHBOARD: "Dashboard",
+	SETTINGS: "Settings",
 	SIGN_OUT: "Sign out",
 };
 

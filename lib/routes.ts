@@ -5,6 +5,6 @@ export const routes = {
 	PASSWORD_RESET: "/auth/reset",
 	NEW_PASSWORD: "/auth/new-password",
 	NEW_VERIFICATION: "/auth/new-verification",
-	DASHBOARD: "/dashboard",
+	SETTINGS: "/settings",
 	ERROR: "/auth/error",
 };

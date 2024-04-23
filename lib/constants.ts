@@ -9,8 +9,8 @@ export const navigation = [
 	},
 	{
 		id: 2,
-		label: appLinkLabels.DASHBOARD,
-		href: routes.DASHBOARD,
+		label: appLinkLabels.SETTINGS,
+		href: routes.SETTINGS,
 	},
 	{
 		id: 3,
@@ -27,8 +27,8 @@ export const navigation = [
 export const dropDownNav = [
 	{
 		id: 1,
-		label: appLinkLabels.DASHBOARD,
-		href: routes.DASHBOARD,
+		label: appLinkLabels.SETTINGS,
+		href: routes.SETTINGS,
 	},
 	{
 		id: 2,
