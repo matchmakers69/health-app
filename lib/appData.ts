@@ -67,7 +67,7 @@ export const validationRules = {
 		emailRequired: "Email is required",
 		invalidEmailAddress: "Invalid email address",
 		passwordMin: "Password must be at least 2 characters long",
-		invalidCodeFormat: "Code must include six digits",
+		invalidCodeFormat: "Code must include only digits",
 		codeMin: "Code must be at least 6 digits",
 		codeMax: "Code cannot be longer then 6 digits",
 	},

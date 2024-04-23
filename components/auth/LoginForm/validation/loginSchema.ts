@@ -11,7 +11,10 @@ export const loginSchema = z.object({
 		z
 			.string()
 			.min(6, { message: validationRules.LOGIN.codeMin })
-			.max(6, { message: validationRules.LOGIN.codeMax }),
+			.max(6, { message: validationRules.LOGIN.codeMax })
+			.refine((value) => /^\d+$/.test(value), {
+				message: validationRules.LOGIN.invalidCodeFormat,
+			}),
 	),
 });
 
