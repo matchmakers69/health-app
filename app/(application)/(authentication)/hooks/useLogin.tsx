@@ -35,6 +35,7 @@ export const useLogin = () => {
 			login(values)
 				.then((data) => {
 					if (data?.error) {
+						setShowTwoFactor(false);
 						reset();
 						setError(data?.error);
 					}

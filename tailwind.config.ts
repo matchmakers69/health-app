@@ -19,7 +19,7 @@ const config: Config = {
 
 		extend: {
 			height: {
-				"input-height": "clamp(3rem,2.5rem + 4vw,6rem)",
+				"input-height": "clamp(3rem,2.5rem + 4vw,5.5rem)",
 			},
 			fontSize: {
 				base: "1.4rem",
@@ -31,6 +31,11 @@ const config: Config = {
 				xl: "5rem",
 				"2xl": "6rem",
 				"3xl": "8rem",
+			},
+			placeholderColor: {
+				primary: "rgb(var(--light-grey))",
+				secondary: "#ffed4a",
+				danger: "#e3342f",
 			},
 			padding: {
 				"pb-3xl": "var(--spacer-x3)",
@@ -44,7 +49,9 @@ const config: Config = {
 			colors: {
 				border: "rgb(var(--border))",
 				"border-input-dark": "rgb(var(--border-input-dark))",
+				"border-input-light": "rgb(var(--border-input-light))",
 				ring: "rgb(var(--ring))",
+				"ring-dark": "rgb(var(--ring-dark))",
 				background: "rgb(var(--background))",
 				body: "rgb(var(--body))",
 				"button-brown-bg": "rgb(var(--button-brown-bg))",

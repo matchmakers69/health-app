@@ -4,11 +4,14 @@ import { type UserRole } from "@prisma/client";
 import { getUserById } from "./data/user";
 import { routes } from "./lib/routes";
 import { getTwoFactorConfirmationByUserId } from "./data/two-factor-confirmation";
+import { getAccountByUserId } from "./data/account";
 import { db } from "@/lib/db";
 import authConfig from "@/auth.config";
 
 export type ExtendedUser = DefaultSession["user"] & {
 	role: UserRole;
+	isTwoFactorEnabled: boolean;
+	is0Auth: boolean;
 };
 
 declare module "next-auth" {
@@ -28,7 +31,7 @@ export const {
 		error: routes.ERROR,
 	},
 	events: {
-		// IMPORTANT! Added to make sure if user logs in with Github or Google emeil will be verified
+		// IMPORTANT! Added to make sure if user logs in with Github or Google email will be verified
 		async linkAccount({ user }) {
 			await db.user.update({
 				where: { id: user.id },
@@ -72,14 +75,32 @@ export const {
 			if (token.role && session.user) {
 				session.user.role = token.role as UserRole;
 			}
+
+			if (session.user) {
+				session.user.isTwoFactorEnabled = token.isTwoFactorEnabled as boolean;
+			}
+
+			if (session.user) {
+				session.user.name = token.name ?? "";
+				session.user.email = token.email ?? "";
+				session.user.is0Auth = token.is0Auth as boolean;
+			}
+
 			return session;
 		},
 		async jwt({ token }) {
 			if (!token.sub) return token;
 			const existingUser = await getUserById(token.sub);
 			if (!existingUser) return token;
+			const existingAccount = await getAccountByUserId(existingUser.id);
+			token.is0Auth = !!existingAccount;
+			// We need to update session when we update name, email, etc
+			token.name = existingUser.name;
+			token.email = existingUser.email;
 			// assign the role to token
 			token.role = existingUser.role;
+			token.isTwoFactorEnabled = existingUser.isTwoFactorEnabled;
+
 			return token;
 		},
 	},

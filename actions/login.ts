@@ -1,6 +1,7 @@
 "use server";
 
 import { AuthError } from "next-auth";
+import bcrypt from "bcryptjs";
 import { type LoginFormValues, loginSchema } from "../components/auth/LoginForm/validation/loginSchema";
 import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 import { signIn } from "@/auth";
@@ -37,6 +38,11 @@ export const login = async (values: LoginFormValues, callbackUrl?: string | null
 
 	// 2FA
 	if (existingUser.isTwoFactorEnabled && existingUser.email) {
+		const isPasswordValid = await bcrypt.compare(password, existingUser.password);
+
+		if (!isPasswordValid) {
+			return { error: "Invalid credentials!" };
+		}
 		if (code) {
 			const twoFactorToken = await getTwoFactorTokenByEmail(existingUser.email);
 			if (!twoFactorToken) {

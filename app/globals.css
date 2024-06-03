@@ -125,8 +125,10 @@ textarea {
 
 		--border: 233, 233, 230;
 		--border-input-dark: 71 75 101;
-		--p-input: clamp(1rem, 1rem + 0.5vw, 2rem);
+		--border-input-light: 205 218 206;
+		--p-input: clamp(1rem, 1rem + 0.5vw, 1rem);
 		--ring: 248, 249, 250;
+		--ring-dark: 42, 49, 50;
 		--radius: 0.5rem;
 		--tw-translate-x: 0;
 		--tw-translate-y: 0;

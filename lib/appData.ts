@@ -48,6 +48,10 @@ export const actionMessages = {
 		emailNotExist: "Email does not exist!",
 		successPasswordUpdated: "Congrats!, Your password has been updated!",
 	},
+
+	SETTING: {
+		unauthorized: "Unauthorized",
+	},
 };
 
 export const validationRules = {
@@ -55,8 +59,8 @@ export const validationRules = {
 		nameRequired: "Name is required",
 		emailRequired: "Email is required",
 		nameMaxLength: "Name must be a maximun 30 characters",
-		invalidEmailAddress: "Invalid email address",
 		nameOneSpace: "Spaces are not allowed",
+		invalidEmailAddress: "Invalid email address",
 		passwordMin: "Password must be at least 6 characters long",
 		passwordMax: "Password must be a maximun 30 characters",
 		passwordUppercase: "Password must conatain an uppercase character",
@@ -74,6 +78,11 @@ export const validationRules = {
 	RESET_PASSWORD: {
 		emailRequired: "Email is required",
 		invalidEmailAddress: "Invalid email address",
+	},
+	SETTINGS: {
+		nameRequired: "Name is required",
+		nameMaxLength: "Name must be a maximun 30 characters",
+		nameOneSpace: "Spaces are not allowed",
 	},
 };
 
