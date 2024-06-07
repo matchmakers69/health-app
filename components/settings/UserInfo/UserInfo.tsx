@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/Card";
 import { CardContent } from "@/components/ui/Card/CardContent";
 import { CardHeader } from "@/components/ui/Card/CardHeader";
 
-function UserInfo({ user, label }: UserInfoProps) {
+function UserInfo({ label }: UserInfoProps) {
 	return (
 		<Card className="w-full shadow-md">
 			<CardHeader>
