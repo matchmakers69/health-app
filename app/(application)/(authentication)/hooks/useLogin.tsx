@@ -13,6 +13,7 @@ export const useLogin = () => {
 	const [showTwoFactor, setShowTwoFactor] = useState(false);
 
 	const searchParams = useSearchParams();
+	const callbackUrl = searchParams.get("callbackUrl");
 	const urlError =
 		searchParams.get("error") === "OAuthAccountNotLinked"
 			? `${pagesText.AUTH_PAGES.ERROR.OAuthAccountError}`
@@ -32,7 +33,7 @@ export const useLogin = () => {
 		setSuccess("");
 		setError("");
 		startTransition(() => {
-			login(values)
+			login(values, callbackUrl)
 				.then((data) => {
 					if (data?.error) {
 						setShowTwoFactor(false);

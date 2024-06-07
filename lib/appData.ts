@@ -51,6 +51,7 @@ export const actionMessages = {
 
 	SETTING: {
 		unauthorized: "Unauthorized",
+		emailAlreadyInUse: "Email already in use!",
 	},
 };
 
@@ -83,6 +84,13 @@ export const validationRules = {
 		nameRequired: "Name is required",
 		nameMaxLength: "Name must be a maximun 30 characters",
 		nameOneSpace: "Spaces are not allowed",
+		emailRequired: "Email is required",
+		invalidEmailAddress: "Invalid email address",
+		passwordMin: "Password must be at least 6 characters long",
+		passwordMax: "Password must be a maximun 30 characters",
+		passwordUppercase: "Password must conatain an uppercase character",
+		passwordWithNumber: "Password must contain a number",
+		passwordWithSpecialCharacter: "Password must contain a special character",
 	},
 };
 

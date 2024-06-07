@@ -4,9 +4,11 @@ export const FormError = ({ message }: FormErrorProps) => {
 	if (!message) return null;
 
 	return (
-		<div className="bg-destructive-foreground text-destructive flex items-center gap-x-2 rounded-md px-6 py-3 text-sm">
+		<div className="flex items-center gap-x-2 rounded-md bg-destructive-foreground px-6 py-3 text-sm text-destructive">
 			<i className="ri-error-warning-line text-md" />
-			<p className="font-semibold">{message}</p>
+			<p aria-live="assertive" className="font-semibold">
+				{message}
+			</p>
 		</div>
 	);
 };

@@ -77,7 +77,6 @@ export const login = async (values: LoginFormValues, callbackUrl?: string | null
 				},
 			});
 		} else {
-			console.log("chujek");
 			const twoFactorToken = await generateTwoFactorToken(existingUser.email);
 			await sendTwoFactorTokenEmail(twoFactorToken.email, twoFactorToken.token);
 			return {
