@@ -2,9 +2,10 @@ import { Resend } from "resend";
 import { routes } from "./routes";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
+const domain = process.env.NEXT_PUBLIC_APP_URL;
 
 export const sendVerificationEmail = async (email: string, token: string) => {
-	const confirmLink = `http://localhost:3000${routes.NEW_VERIFICATION}?token=${token}`; //TODO temporary only change localhost to real domain
+	const confirmLink = `${domain}${routes.NEW_VERIFICATION}?token=${token}`;
 	await resend.emails.send({
 		from: "onboarding@resend.dev", // TODO temporary only
 		to: email,
@@ -14,7 +15,7 @@ export const sendVerificationEmail = async (email: string, token: string) => {
 };
 
 export const sendPasswordResetEmail = async (email: string, token: string) => {
-	const resetLink = `http://localhost:3000${routes.NEW_PASSWORD}?token=${token}`; //TODO temporary only change localhost to real domain
+	const resetLink = `${domain}${routes.NEW_PASSWORD}?token=${token}`;
 
 	await resend.emails.send({
 		from: "onboarding@resend.dev", // TODO temporary only
