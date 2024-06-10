@@ -9,7 +9,10 @@ export const Input = forwardRef<HTMLInputElement, FormInputProps>(
 		return (
 			<div>
 				{label && (
-					<label htmlFor={id} className="mb-3 block text-left text-base font-medium leading-6 md:text-md">
+					<label
+						htmlFor={id}
+						className={`${props.disabled ? "opacity-15" : "opacity-100"} mb-3 block text-left text-base font-medium leading-6 md:text-md`}
+					>
 						{label}
 					</label>
 				)}

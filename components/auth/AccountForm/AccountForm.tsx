@@ -10,12 +10,15 @@ import { FormError } from "@/components/ui/FormError";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
+import { Checkbox } from "@/components/ui/Checkbox";
 
 function AccountForm() {
 	const user = useCurrentUser();
 	const { update } = useSession();
 	const [isPending, startTransition] = useTransition();
 	const [error, setError] = useState<string | undefined>();
+	const [enablePasswordUpdate, setEnablePasswordsUpdate] = useState(false);
+
 	const [success, setSuccess] = useState<string | undefined>();
 	const {
 		register,
@@ -83,11 +86,21 @@ function AccountForm() {
 								{...register("email")}
 								error={errors.email}
 							/>
+							<Checkbox
+								label="I want to update my password"
+								defaultChecked={enablePasswordUpdate}
+								onChange={() => setEnablePasswordsUpdate(!enablePasswordUpdate)}
+								id="display-passwords"
+								strokeColor="white"
+								className="border-border-input-light checked:bg-dark-green"
+							/>
+
 							<Input
 								label="Enter your password"
 								type="password"
 								className="w-full border-border-input-light bg-transparent focus:border-ring-dark focus:outline-none focus:ring-1 focus:ring-ring-dark"
 								placeholder="******"
+								disabled={!enablePasswordUpdate}
 								{...register("password")}
 								error={errors.password}
 							/>
@@ -97,6 +110,7 @@ function AccountForm() {
 								type="password"
 								className="w-full border-border-input-light bg-transparent focus:border-ring-dark focus:outline-none focus:ring-1 focus:ring-ring-dark"
 								placeholder="******"
+								disabled={!enablePasswordUpdate}
 								{...register("newPassword")}
 								error={errors.newPassword}
 							/>
