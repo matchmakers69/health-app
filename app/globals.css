@@ -103,7 +103,7 @@ textarea {
 		--light-blue: 142, 202, 230;
 		--foreground-grey: 74, 78, 105;
 		--light-green: 216, 243, 220;
-		--light-grey: 159, 162, 187;
+		--light-grey: 251, 250, 247;
 		--dark-purple: 20, 33, 61;
 		--bg-purple: 36, 0, 70;
 		--wave-purple: 60, 9, 108;
@@ -142,7 +142,7 @@ textarea {
 
 @layer base {
 	body {
-		@apply bg-dark-purple text-text-light;
+		@apply bg-light-grey text-text-light;
 	}
 }
 

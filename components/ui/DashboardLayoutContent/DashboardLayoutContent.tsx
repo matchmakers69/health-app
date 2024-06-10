@@ -9,9 +9,9 @@ function DashboardLayoutContent({ children }: DashboardLayoutContentProps) {
 	const { isSidebarInView } = useDashboardLayoutContext();
 
 	return (
-		<div className="flex flex-col">
+		<div className="flex min-h-full flex-col bg-light-grey">
 			<div
-				className={`flex-grow ${!isSidebarInView ? "ml-0 w-full" : "md:ml-[30rem] md:w-[calc(100%-30rem)]"} w-full overflow-y-auto bg-light-green transition-all`}
+				className={`flex-grow ${!isSidebarInView ? "ml-0 w-full" : "md:ml-[30rem] md:w-[calc(100%-30rem)]"} w-full overflow-y-auto transition-all`}
 			>
 				<div className="pb-[12rem] pl-[2rem] pr-[2rem] md:pl-[3rem] md:pr-[3rem]">
 					<NavbarDashboard />

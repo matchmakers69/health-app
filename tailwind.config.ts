@@ -34,7 +34,7 @@ const config: Config = {
 			},
 			placeholderColor: {
 				primary: "rgb(var(--light-grey))",
-				secondary: "#ffed4a",
+				secondary: "rgb(var(--border-input-light) / 0.5)",
 				danger: "#e3342f",
 			},
 			padding: {
