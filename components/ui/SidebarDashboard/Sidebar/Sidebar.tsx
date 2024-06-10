@@ -18,7 +18,7 @@ function Sidebar({ children }: SidebarProps) {
 	};
 	return (
 		<aside
-			className={`${!isSidebarInView ? "-translate-x-full" : "translate-x-0"} sidebar-menu fixed left-0 top-0 z-50 flex h-full w-[26rem] flex-shrink-0 flex-col transition-transform`}
+			className={`${!isSidebarInView ? "-translate-x-full" : "translate-x-0"} sidebar-menu fixed left-0 top-0 z-50 flex h-full w-[30rem] flex-shrink-0 flex-col transition-transform`}
 		>
 			<div className="sidebar-inner flex h-full min-h-0 flex-1 flex-col bg-foreground-green px-[1.5rem] md:px-[2rem]">
 				<div className="sidebar-content flex flex-1 flex-col overflow-y-auto pb-4">

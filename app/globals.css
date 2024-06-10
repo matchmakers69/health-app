@@ -125,7 +125,7 @@ textarea {
 
 		--border: 233, 233, 230;
 		--border-input-dark: 71 75 101;
-		--border-input-light: 205 218 206;
+		--border-input-light: 60 60 59;
 		--p-input: clamp(1rem, 1rem + 0.5vw, 1rem);
 		--ring: 248, 249, 250;
 		--ring-dark: 42, 49, 50;

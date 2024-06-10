@@ -49,7 +49,7 @@ const config: Config = {
 			colors: {
 				border: "rgb(var(--border))",
 				"border-input-dark": "rgb(var(--border-input-dark))",
-				"border-input-light": "rgb(var(--border-input-light))",
+				"border-input-light": "rgb(var(--border-input-light) / 0.09)",
 				ring: "rgb(var(--ring))",
 				"ring-dark": "rgb(var(--ring-dark))",
 				background: "rgb(var(--background))",

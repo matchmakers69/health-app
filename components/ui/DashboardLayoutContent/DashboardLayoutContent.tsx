@@ -9,11 +9,11 @@ function DashboardLayoutContent({ children }: DashboardLayoutContentProps) {
 	const { isSidebarInView } = useDashboardLayoutContext();
 
 	return (
-		<main className="flex min-h-screen flex-col">
+		<div className="flex flex-col">
 			<div
-				className={`flex-grow ${!isSidebarInView ? "ml-0 w-full" : "md:ml-[26rem] md:w-[calc(100%-26rem)]"} w-full overflow-y-auto bg-light-green transition-all`}
+				className={`flex-grow ${!isSidebarInView ? "ml-0 w-full" : "md:ml-[30rem] md:w-[calc(100%-30rem)]"} w-full overflow-y-auto bg-light-green transition-all`}
 			>
-				<div className="pb-[12rem] pl-[1.5rem] pr-[1.5rem] md:pl-[2rem] md:pr-[2rem]">
+				<div className="pb-[12rem] pl-[2rem] pr-[2rem] md:pl-[3rem] md:pr-[3rem]">
 					<NavbarDashboard />
 					<div className="py-[1.5rem] md:py-[2rem]">{children}</div>
 				</div>
@@ -21,7 +21,7 @@ function DashboardLayoutContent({ children }: DashboardLayoutContentProps) {
 			<footer className="relative">
 				<DashboardFooterShape />
 			</footer>
-		</main>
+		</div>
 	);
 }
 

@@ -12,7 +12,7 @@ const rubik = Rubik({
 const DashboardHeading = ({ title }: DashboardHeadingProps) => {
 	return (
 		<h1
-			className={`${rubik.className} mb-[4rem] text-lg font-semibold leading-[1.2] text-dark-green md:text-lg lg:text-xl`}
+			className={`${rubik.className} mb-[2rem] font-semibold leading-[1.2] text-dark-green md:text-[2.4rem]`}
 		>
 			{title}
 		</h1>
