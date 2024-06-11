@@ -1,6 +1,6 @@
 export const FooterAuth = () => {
 	return (
-		<footer className="bg-light-grey relative mt-auto w-full py-10 pt-[130px] text-navy md:pt-[150px]">
+		<footer className="bg-foreground-lighter-violet relative mt-auto w-full py-10 pt-[130px] text-navy md:pt-[150px]">
 			<div className="container mx-auto">
 				<div className="mx-auto p-4">
 					<p className="caption text-n-4 lg:block">© {new Date().getFullYear()}. All rights reserved.</p>

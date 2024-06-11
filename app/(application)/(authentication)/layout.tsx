@@ -13,7 +13,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
 					<Navbar />
 				</LayoutContent>
 
-				<main className="animated flex min-h-[50vh] max-w-full flex-2 flex-col bg-foreground-grey pt-[80px]">
+				<main className="animated bg-foreground-dark-violet flex min-h-[50vh] max-w-full flex-2 flex-col pt-[80px]">
 					<Suspense fallback={<Loading />}>{children}</Suspense>
 				</main>
 			</AppLayoutContextProvider>

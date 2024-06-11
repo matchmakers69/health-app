@@ -5,6 +5,7 @@ export const appLinkLabels = {
 	LOGIN: "Login",
 	REGISTER: "Register",
 	SETTINGS: "Settings",
+	ISSUES: "Issues",
 	SIGN_OUT: "Sign out",
 };
 
@@ -53,6 +54,10 @@ export const actionMessages = {
 		unauthorized: "Unauthorized",
 		emailAlreadyInUse: "Email already in use!",
 	},
+	ISSUES: {
+		unauthorized: "Unauthorized",
+		emailAlreadyInUse: "Email already in use!",
+	},
 };
 
 export const validationRules = {
@@ -91,6 +96,14 @@ export const validationRules = {
 		passwordUppercase: "Password must conatain an uppercase character",
 		passwordWithNumber: "Password must contain a number",
 		passwordWithSpecialCharacter: "Password must contain a special character",
+	},
+	ISSUES: {
+		titleRequired: "Title is required",
+		descriptionRequired: "Description is required",
+		titleMaxLength: "Title must be a maximun 30 characters",
+		descriptionMaxLength: "Description must be a maximun 500 characters",
+		titleMin: "Title must be at least 2 characters long",
+		descriptionMin: "Description must be at least 10 characters long",
 	},
 };
 

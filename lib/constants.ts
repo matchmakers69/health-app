@@ -14,11 +14,16 @@ export const navigation = [
 	},
 	{
 		id: 3,
+		label: appLinkLabels.ISSUES,
+		href: routes.ISSUES,
+	},
+	{
+		id: 4,
 		label: appLinkLabels.LOGIN,
 		href: routes.LOGIN,
 	},
 	{
-		id: 4,
+		id: 5,
 		label: appLinkLabels.REGISTER,
 		href: routes.REGISTER,
 	},

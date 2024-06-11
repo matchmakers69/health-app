@@ -70,7 +70,7 @@ function AccountForm() {
 					<Input
 						label="Enter your name"
 						type="text"
-						className="w-full border-border-input-light bg-transparent placeholder-secondary focus:border-ring-dark focus:outline-none focus:ring-1 focus:ring-ring-dark"
+						className="w-full border-border-input-light bg-transparent placeholder-secondary"
 						placeholder="Your name"
 						{...register("name")}
 						error={errors.name}
@@ -81,7 +81,7 @@ function AccountForm() {
 							<Input
 								label="Enter your email"
 								type="email"
-								className="w-full border-border-input-light bg-transparent placeholder-secondary focus:border-ring-dark focus:outline-none focus:ring-1 focus:ring-ring-dark"
+								className="w-full border-border-input-light bg-transparent placeholder-secondary"
 								placeholder="Your email"
 								{...register("email")}
 								error={errors.email}
@@ -98,7 +98,7 @@ function AccountForm() {
 							<Input
 								label="Enter your password"
 								type="password"
-								className="w-full border-border-input-light bg-transparent placeholder-secondary focus:border-ring-dark focus:outline-none focus:ring-1 focus:ring-ring-dark"
+								className="w-full border-border-input-light bg-transparent placeholder-secondary"
 								placeholder="******"
 								disabled={!enablePasswordUpdate}
 								{...register("password")}

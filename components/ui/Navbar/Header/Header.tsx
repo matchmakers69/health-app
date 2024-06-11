@@ -22,7 +22,7 @@ function Header({ children }: HeaderProps) {
 	return (
 		<header
 			className={`${
-				isStickyHeader ? "h-[70px] bg-[rgb(0,6,18)] shadow-lg" : "shadow-header h-[80px]"
+				isStickyHeader ? "h-[70px] bg-black shadow-lg" : "shadow-header h-[80px]"
 			} fixed left-0 top-0 z-30 w-full text-text-light transition-all`}
 		>
 			<nav className="relative z-10 flex h-full w-full items-center">
@@ -31,7 +31,7 @@ function Header({ children }: HeaderProps) {
 						className="sidebar-menu-toggle-button border-r-gray-15 inline-flex h-full cursor-pointer items-center p-[1.5rem] text-[14px] uppercase focus:outline-none focus:ring-1 focus-visible:ring-offset-1 md:p-[20px]"
 						onClick={handleOpenSidebarMenu}
 						type="button"
-						aria-label="toggle sidebar"
+						aria-label="toggle navigation sidebar"
 					>
 						<span className="sidebar-menu-toggle-button-icon mr-[0.8rem] inline-flex h-[1.5rem] w-[1.5rem] flex-col items-start" />
 						{headerLabels.MENU}

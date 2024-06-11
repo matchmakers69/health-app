@@ -6,5 +6,7 @@ export const routes = {
 	NEW_PASSWORD: "/auth/new-password",
 	NEW_VERIFICATION: "/auth/new-verification",
 	SETTINGS: "/settings",
+	ISSUES: "/issues",
+	NEW_ISSUE: "/issues/new",
 	ERROR: "/auth/error",
 };

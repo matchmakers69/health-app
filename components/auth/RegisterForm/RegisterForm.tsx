@@ -15,7 +15,7 @@ export function RegisterForm() {
 	return (
 		<CardWrapper
 			headerLabel={pagesText.AUTH_PAGES.REGISTER.cardTitle}
-			backButtonLabel={pagesText.AUTH_PAGES.REGISTER.cardTitle}
+			backButtonLabel={pagesText.AUTH_PAGES.REGISTER.backButtonLabel}
 			backButtonHref={routes.LOGIN}
 			showSocial
 		>

@@ -97,11 +97,14 @@ textarea {
 		--border-bottom-light: 176, 196, 177;
 		--button-brown-bg: 188, 138, 95;
 		--navy: 1, 42, 74;
+		--black: 2, 2, 2;
+		--white: 255, 255, 255;
 		--dark-green: 42, 49, 50;
 		--foreground-green: 27, 67, 50;
 		--foreground-blue: 33, 158, 188;
 		--light-blue: 142, 202, 230;
-		--foreground-grey: 74, 78, 105;
+		--foreground-dark-violet: 70, 70, 104;
+		--foreground-lighter-violet: 161, 136, 166;
 		--light-green: 216, 243, 220;
 		--light-grey: 251, 250, 247;
 		--dark-purple: 20, 33, 61;
@@ -118,7 +121,7 @@ textarea {
 		--secondary-foreground: 56, 59, 80;
 		--accent: 210 40% 96.1%;
 		--accent-foreground: 222.2 47.4% 11.2%;
-		--success-foreground: 106 135 124;
+		--success-foreground: 148 210 189;
 		--success: 0 56 35;
 		--destructive-foreground: 230 180 180;
 		--destructive: 174 14 14;
@@ -142,7 +145,7 @@ textarea {
 
 @layer base {
 	body {
-		@apply bg-light-grey text-text-light;
+		@apply bg-background text-text-light;
 	}
 }
 
@@ -298,7 +301,7 @@ textarea {
 }
 
 .wave-footer-auth .shape-fill {
-	fill: rgb(var(--foreground-grey));
+	fill: rgb(var(--foreground-dark-violet));
 }
 
 .dashboard-wave {
