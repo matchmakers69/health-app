@@ -1,5 +1,5 @@
+import { IssuesCard } from "@/components/issues/IssuesCard";
 import { NewIssueForm } from "@/components/issues/NewIssueForm";
-import { UserProfileCard } from "@/components/settings/UserProfileCard";
 import { CardTitle } from "@/components/ui/Card/CardTitle";
 import { DashboardHeading } from "@/components/ui/DashboardHeading";
 
@@ -7,10 +7,10 @@ function NewIssuePage() {
 	return (
 		<main className="text-dark-green">
 			<DashboardHeading title="New issue" />
-			<UserProfileCard>
+			<IssuesCard>
 				<CardTitle className="mb-12 text-[2rem]">Create new issue</CardTitle>
 				<NewIssueForm />
-			</UserProfileCard>
+			</IssuesCard>
 		</main>
 	);
 }
