@@ -69,3 +69,19 @@ export const framerText = {
 	animate: { opacity: 1, x: 0 },
 	transition: { duration: 0.8 },
 };
+
+const acceptedDocumentTypes = {
+	"application/pdf": [".pdf"],
+	"application/msword": [".doc"],
+	"application/vnd.openxmlformats-officedocument.wordprocessingml.document": [".docx"],
+	"application/rtf": [".rtf"],
+	"text/plain": [".txt"],
+	"image/tiff": [".tif", ".tiff"],
+	"image/jpeg": [".jpeg", ".jpg"],
+	"image/png": [".png"],
+	"application/vnd.oasis.opendocument.text": [".odt"],
+	"image/heic": [".heic"],
+	"message/rfc822": [".eml"],
+};
+
+export default acceptedDocumentTypes;

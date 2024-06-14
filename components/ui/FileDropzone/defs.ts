@@ -1,5 +1,9 @@
 export interface FileDropzoneProps {
+	maxSizeInMB: number;
 	className?: string;
+	acceptedFileTypes: Record<string, string[]>;
+	onFilesAdded: (files: File[]) => void;
+	// onFilesSelected: (acceptedFiles: File[], rejectedFiles: InvalidFiles) => void;
 }
 
 export interface FileError {
@@ -19,6 +23,6 @@ export interface InvalidFileErrors {
 	fileInvalidType: File[];
 }
 
-export type DocumentUploadStatus = "ready" | "pending" | "complete" | "failed";
+export type DocumentUploadStatus = "ready" | "uploading" | "complete" | "error" | "canceled";
 
 export type UploadStatusRetrievedCallback = (status: DocumentUploadStatus, workflowId?: string) => void;

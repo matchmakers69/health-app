@@ -1,3 +1,5 @@
+"use client";
+
 import { createContext, useContext, useMemo, useReducer } from "react";
 import {
 	type DocumentUploadState,
@@ -16,14 +18,18 @@ export const useFileUploadContext = () => {
 
 	return context;
 };
-
 const initialState: DocumentUploadState = {
-	uploadStatus: "idle",
 	documents: [],
-	rejectedFiles: [],
-	removalMessage: "",
-	isContainUploadFailed: false,
+	isUploading: false,
 };
+
+// const initialState: DocumentUploadState = {
+// 	uploadStatus: "idle",
+// 	documents: [],
+// 	rejectedFiles: [],
+// 	removalMessage: "",
+// 	isContainUploadFailed: false,
+// };
 
 export const FilesUploadContextProvider = ({ children }: FilesUploadContextProviderProps) => {
 	const [state, dispatch] = useReducer(reducer, initialState);

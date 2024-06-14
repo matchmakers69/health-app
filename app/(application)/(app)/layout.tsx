@@ -1,7 +1,7 @@
 import { DashboardLayoutContent } from "@/components/ui/DashboardLayoutContent";
 import { SidebarDashboard } from "@/components/ui/SidebarDashboard";
 import { DashboardLayoutContextProvider } from "@/context/DashboardLayoutContext";
-import { FilesUploadContextProvider } from "@/context/FileUploadsContext/FileUploadsContext";
+import { FilesUploadContextProvider } from "@/context/FileUploadsContext";
 
 export default function ApplicationLayout({ children }: { children: React.ReactNode }) {
 	return (
