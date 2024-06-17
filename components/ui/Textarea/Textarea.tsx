@@ -5,7 +5,6 @@ import { cn } from "@/lib/utils";
 export const Textarea = forwardRef(
 	({ className, label, error, ...rest }: TextareaProps, ref: ForwardedRef<HTMLTextAreaElement>) => {
 		const id = useId();
-		// "flex h-input-height w-full border border-border-input-dark bg-background px-p-input py-0 text-sm placeholder-primary file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-left placeholder:opacity-40 focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring-dark disabled:cursor-not-allowed disabled:opacity-50 md:text-md
 
 		return (
 			<div>
@@ -17,15 +16,15 @@ export const Textarea = forwardRef(
 						{label}
 					</label>
 				)}
-				<div className={cn("w-full", error ? "relative shadow-sm" : "static")}>
+
+				<div className={cn("w-full", error ? "relative" : "static")}>
 					<textarea
 						rows={4}
 						className={
 							error
-								? `block w-full rounded-md border-0 px-1.5 py-1.5 pr-10 text-red-900 ring-1 ring-inset ring-red-300 placeholder:text-red-300 focus:ring-2 focus:ring-inset focus:ring-red-500 sm:text-sm sm:leading-6  ${className}`
-								: `block w-full border border-border-input-dark bg-background px-p-input py-0 text-sm placeholder-primary file:text-sm file:font-medium placeholder:text-left placeholder:opacity-40 focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring-dark disabled:cursor-not-allowed disabled:opacity-50 md:text-md ${className}`
+								? `block w-full border-0 bg-background px-p-input py-0 text-sm placeholder-primary ring-1 ring-inset ring-red-300 placeholder:text-left placeholder:opacity-40 focus:border-ring focus:outline-none focus:ring-2 focus:ring-inset focus:ring-red-500 focus:ring-ring-dark md:text-md  ${className}`
+								: `block w-full border border-border-input-dark bg-background px-p-input py-0 text-sm placeholder-primary placeholder:text-left placeholder:opacity-40 focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring-dark disabled:cursor-not-allowed disabled:opacity-50 md:text-md ${className}`
 						}
-						// {...(name && register ? register(name) : {})}
 						ref={ref}
 						id={id}
 						{...rest}

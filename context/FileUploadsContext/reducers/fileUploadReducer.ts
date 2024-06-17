@@ -7,6 +7,11 @@ export const reducer = (state: DocumentUploadState, action: DocumentUploadAction
 				...state,
 				documents: [...state.documents, { file: action.payload, status: "ready" }],
 			};
+		case "SAVE_UPLOADED_FILE":
+			return {
+				...state,
+				uploadedFiles: [...state.uploadedFiles, action.payload],
+			};
 		case "UPDATE_DOCUMENT_STATUS":
 			return {
 				...state,

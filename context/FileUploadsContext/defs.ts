@@ -5,23 +5,23 @@ export interface FilesUploadContextProviderProps {
 	children: ReactNode;
 }
 
-// export interface Document {
-// 	documentId?: string; // DocumentID corresponds with the document ID in the backend
-// 	fileId: number; // File ID is used for locally referencing the file for removal from the queue
-// 	file: File;
-// 	status: DocumentUploadStatus;
-// }
-
 export interface Document {
 	fileId?: number; // File ID is used for locally referencing the file for removal from the queue
 	file: File;
 	status: DocumentUploadStatus;
 }
 
+export interface DocumentUploaded {
+	version: number;
+	signature: string;
+	public_id: string;
+}
+
 export type UploadStatus = "idle" | "uploading" | "complete" | "error";
 
 export interface DocumentUploadState {
 	documents: Document[];
+	uploadedFiles: DocumentUploaded[];
 	isUploading: boolean;
 	// uploadStatus: UploadStatus;
 	// documents: Document[];
@@ -32,6 +32,7 @@ export interface DocumentUploadState {
 
 export type DocumentUploadAction =
 	| { type: "ADD_DOCUMENT"; payload: File }
+	| { type: "SAVE_UPLOADED_FILE"; payload: DocumentUploaded }
 	| { type: "SET_IS_UPLOADING"; payload: boolean }
 	| { type: "UPDATE_DOCUMENT_STATUS"; payload: { file: File; status: Document["status"] } }
 	| { type: "REMOVE_DOCUMENT"; payload: File }

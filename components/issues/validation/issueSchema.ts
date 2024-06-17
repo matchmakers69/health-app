@@ -10,7 +10,7 @@ export const issueSchema = z.object({
 	description: z
 		.string()
 		.min(10, { message: validationRules.ISSUES.descriptionMin })
-		.min(500, { message: validationRules.ISSUES.descriptionMaxLength }),
+		.max(500, { message: validationRules.ISSUES.descriptionMaxLength }),
 });
 
 export type IssuesFormValues = z.infer<typeof issueSchema>;

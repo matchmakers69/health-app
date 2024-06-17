@@ -21,6 +21,7 @@ export const useFileUploadContext = () => {
 const initialState: DocumentUploadState = {
 	documents: [],
 	isUploading: false,
+	uploadedFiles: [],
 };
 
 // const initialState: DocumentUploadState = {

@@ -3,7 +3,7 @@ import { type FormInputProps } from "./defs";
 import { cn } from "@/lib/utils";
 
 export const Input = forwardRef<HTMLInputElement, FormInputProps>(
-	({ className, type, label, error, ...props }, ref) => {
+	({ className, type, label, error, readOnly, ...props }, ref) => {
 		const id = useId();
 
 		return (
@@ -16,16 +16,21 @@ export const Input = forwardRef<HTMLInputElement, FormInputProps>(
 						{label}
 					</label>
 				)}
-				<div className={cn("w-full", error ? "relative shadow-sm" : "static")}>
+
+				<div className={cn("w-full", error ? "relative" : "static")}>
 					<input
 						type={type}
 						className={cn(
-							"flex h-input-height w-full border border-border-input-dark bg-background px-p-input py-0 text-sm placeholder-primary file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-left placeholder:opacity-40 focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring-dark disabled:cursor-not-allowed disabled:opacity-50 md:text-md",
+							"flex h-input-height w-full px-p-input py-0 text-sm placeholder-primary placeholder:text-left placeholder:opacity-40 focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring-dark disabled:cursor-not-allowed disabled:opacity-50 md:text-md",
+							error
+								? "border-0 bg-background ring-1 ring-inset ring-red-300 focus:ring-2 focus:ring-inset focus:ring-red-500 focus:ring-ring-dark"
+								: "border border-border-input-dark bg-background file:border-0 file:bg-transparent file:text-sm file:font-medium",
+							readOnly ? "cursor-not-allowed opacity-50" : "",
 							className,
 						)}
-						// {...(name && register ? register(name) : {})}
 						ref={ref}
 						id={id}
+						readOnly={readOnly}
 						{...props}
 					/>
 					{error && <p className="mt-2 text-left text-base text-error">{error.message}</p>}

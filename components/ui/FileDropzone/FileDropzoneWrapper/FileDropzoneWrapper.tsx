@@ -66,7 +66,7 @@ function FileDropzoneWrapper({ maxSizeInMB }: FileDropzoneWrapperProps) {
 							signature: data?.signature,
 							public_id: data?.public_id,
 						});
-
+						dispatch({ type: "SAVE_UPLOADED_FILE", payload: data });
 						dispatch({ type: "UPDATE_DOCUMENT_STATUS", payload: { file, status: "complete" } });
 					} catch (error) {
 						console.error("Error uploading file:", error);
@@ -79,43 +79,6 @@ function FileDropzoneWrapper({ maxSizeInMB }: FileDropzoneWrapperProps) {
 		},
 		[documents, dispatch],
 	);
-
-	// async function action() {
-	// 	const filesToUpload = documents.filter((doc) => doc.status === "ready");
-	// 	const document = filesToUpload[0];
-	// 	if (!document) return;
-
-	// 	const { file } = document;
-	// 	const { timestamp, signature } = await getSignature();
-
-	// 	const formData = new FormData();
-
-	// 	formData.append("file", file);
-	// 	formData.append("api_key", process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY!);
-	// 	formData.append("signature", signature);
-	// 	formData.append("timestamp", timestamp.toString());
-	// 	formData.append("folder", "avatars");
-
-	// 	const endpoint = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_URL;
-
-	// 	if (!endpoint) {
-	// 		console.error("Cloudinary upload URL is not defined.");
-	// 		return;
-	// 	}
-
-	// 	const data = await fetch(endpoint, {
-	// 		method: "POST",
-	// 		body: formData,
-	// 	}).then((res) => res.json());
-	// 	console.log(data, "data");
-
-	// 	// write to database using server actions
-	// 	await saveToDatabase({
-	// 		version: data?.version,
-	// 		signature: data?.signature,
-	// 		public_id: data?.public_id,
-	// 	});
-	// }
 
 	const handleRemoveDocument = (fileName: string) => {
 		const fileToRemove = documents.find((doc) => doc.file.name === fileName);

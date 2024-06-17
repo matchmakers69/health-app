@@ -105,6 +105,18 @@ export const validationRules = {
 		titleMin: "Title must be at least 2 characters long",
 		descriptionMin: "Description must be at least 10 characters long",
 	},
+	TEST_RESULTS: {
+		name: "Test result name is required",
+		descriptionRequired: "Description is required",
+		nameMaxLength: "Title must be a maximun 30 characters",
+		descriptionMaxLength: "Description must be a maximun 500 characters",
+		nameMin: "Title must be at least 2 characters long",
+		descriptionMin: "Description must be at least 10 characters long",
+		file_nameRequired: "File name is required when attaching a file",
+		versionRequired: "Version is required when attaching a file",
+		signatureRequired: "Signature is required when attaching a file",
+		public_idRequired: "Public ID is required when attaching a file",
+	},
 };
 
 export const pagesText = {

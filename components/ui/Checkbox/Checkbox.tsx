@@ -1,16 +1,16 @@
 import { type CheckboxProps } from "./defs";
 import { cn } from "@/lib/utils";
 
-function Checkbox({ label, onChange, id, className, strokeColor, ...props }: CheckboxProps) {
+function Checkbox({ label, onChange, id, className, strokeColor, checked, ...props }: CheckboxProps) {
 	return (
 		<div className="flex w-full items-center gap-4">
 			<input
 				className={cn(
-					"disabled:border-steel-400 disabled:bg-steel-400 peer relative mt-0 flex h-10 w-10  shrink-0 appearance-none flex-col items-center justify-center rounded-sm border-2 border-border-input-light bg-white checked:border-0 checked:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:ring-offset-0",
+					"disabled:border-steel-400 disabled:bg-steel-400 peer relative mt-0 flex h-10 w-10 shrink-0 appearance-none flex-col items-center justify-center rounded-sm border-2 border-border-input-light bg-white checked:border-0 checked:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:ring-offset-0",
 					className,
 				)}
 				type="checkbox"
-				checked={props.checked}
+				checked={checked}
 				id={id}
 				onChange={onChange}
 				{...props}
