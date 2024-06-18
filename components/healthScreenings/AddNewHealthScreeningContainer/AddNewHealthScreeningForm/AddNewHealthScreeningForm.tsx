@@ -1,24 +1,44 @@
 "use client";
 
-import { useForm } from "react-hook-form";
+import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { type ChangeEvent, useEffect, useState, useTransition } from "react";
-import { type TestResultsFormValues, testResultsSchema } from "../validation/testResultsSchema";
+import {
+	type AddNewHealthScreenSchemaValues,
+	addNewHealthScreenSchema,
+} from "../../validation/addNewHealthScreenSchema";
+import FileUploadFields from "../FileUploadFields";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
 import { useFileUploadContext } from "@/context/FileUploadsContext/FileUploadsContext";
-import { createTestResult } from "@/actions/createTestResult";
 import { FormError } from "@/components/ui/FormError";
 import { FormSuccess } from "@/components/ui/FormSuccess";
 import { Checkbox } from "@/components/ui/Checkbox";
+import { addNewHealthScreen } from "@/actions/add-new-health-screen";
+import { useDashboardLayoutContext } from "@/context/DashboardLayoutContext";
 
-function CreateTestResultsForm() {
-	const { documents, uploadedFiles } = useFileUploadContext();
+function AddNewHealthScreeningForm() {
+	const { dispatch } = useDashboardLayoutContext();
+	const { documents, uploadedFiles, uploadStatus, dispatch: fileUploadDispatch } = useFileUploadContext();
 	const [isPending, startTransition] = useTransition();
 	const [error, setError] = useState<string | undefined>();
 	const [success, setSuccess] = useState<string | undefined>();
 	const [isFormInteracted, setIsFormInteracted] = useState(false);
+
+	const methods = useForm<AddNewHealthScreenSchemaValues>({
+		mode: "onChange",
+		resolver: zodResolver(addNewHealthScreenSchema, {}, { raw: true }),
+		defaultValues: {
+			name: "",
+			notes: "",
+			attachFile: false,
+			file_name: documents[0]?.file.name || "",
+			version: uploadedFiles[0]?.version ? Number(uploadedFiles[0]?.version) : null,
+			signature: uploadedFiles[0]?.signature || "",
+			public_id: uploadedFiles[0]?.public_id || "",
+		},
+	});
 
 	const {
 		register,
@@ -28,19 +48,7 @@ function CreateTestResultsForm() {
 		watch,
 		setValue,
 		trigger,
-	} = useForm<TestResultsFormValues>({
-		mode: "onChange",
-		resolver: zodResolver(testResultsSchema, {}, { raw: true }),
-		defaultValues: {
-			name: "",
-			description: "",
-			attachFile: false,
-			file_name: documents[0]?.file.name || "",
-			version: uploadedFiles[0]?.version ? Number(uploadedFiles[0]?.version) : null,
-			signature: uploadedFiles[0]?.signature || "",
-			public_id: uploadedFiles[0]?.public_id || "",
-		},
-	});
+	} = methods;
 
 	const attachFile = watch("attachFile");
 
@@ -65,12 +73,20 @@ function CreateTestResultsForm() {
 	const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setValue("attachFile", e.target.checked);
 		setIsFormInteracted(true); // Set isFormInteracted to true when the checkbox is clicked
+
 		if (e.target.checked) {
 			trigger();
 		}
 	};
 
-	const handleCreateTestSubmit = (values: TestResultsFormValues) => {
+	const handleOpenModalWithFileDropzone = () => {
+		dispatch({
+			type: "OPEN_MODAL",
+			payload: true,
+		});
+	};
+
+	const handleAddNewHealthScreeningSubmit = (values: AddNewHealthScreenSchemaValues) => {
 		setIsFormInteracted(true); // Set isFormInteracted to true when the form is submitted
 		const payload = {
 			...values,
@@ -81,13 +97,27 @@ function CreateTestResultsForm() {
 		};
 
 		startTransition(() => {
-			createTestResult(payload)
+			addNewHealthScreen(payload)
 				.then((data) => {
 					if (data?.error) {
 						setError(data.error);
 					}
 					if (data?.success) {
 						setSuccess(data?.success);
+						reset({
+							name: "",
+							notes: "",
+							attachFile: false,
+							file_name: "",
+							version: null,
+							signature: "",
+							public_id: "",
+						});
+						fileUploadDispatch({
+							type: "SET_UPLOAD_STATUS",
+							payload: "idle",
+						});
+						setIsFormInteracted(false);
 					}
 				})
 				.catch(() => setError("Something went wrong!"));
@@ -95,28 +125,28 @@ function CreateTestResultsForm() {
 	};
 
 	return (
-		<>
-			<form autoComplete="off" noValidate onSubmit={handleSubmit(handleCreateTestSubmit)}>
+		<FormProvider {...methods}>
+			<form autoComplete="off" noValidate onSubmit={handleSubmit(handleAddNewHealthScreeningSubmit)}>
 				<div className="mb-14 flex w-full flex-col gap-[3rem]">
 					<Input
 						label="Enter test result name"
 						type="text"
-						className="w-full border-border-input-light bg-transparent placeholder-secondary"
+						className="w-full border-border-input-light bg-white placeholder-secondary"
 						placeholder="Test name"
 						{...register("name")}
 						error={errors.name}
 					/>
 
 					<Textarea
-						label="Your issue description"
-						className="border-border-input-light bg-transparent placeholder-secondary"
-						placeholder="Test description"
-						{...register("description")}
-						error={errors.description}
+						label="Add your note"
+						className="border-border-input-light bg-white placeholder-secondary"
+						placeholder="Note i.e 'No comments'"
+						{...register("notes")}
+						error={errors.notes}
 					/>
 					<div className="flex items-center gap-2">
 						<Checkbox
-							label="I want to attach a file"
+							label="I want to attach a file (doc, docx, pdf, png, jpg)"
 							checked={attachFile}
 							onChange={handleCheckboxChange}
 							id="attachFile"
@@ -126,42 +156,15 @@ function CreateTestResultsForm() {
 					</div>
 					{attachFile && (
 						<>
-							<Input
-								label="Enter file name"
-								type="text"
-								className="w-full border-border-input-light bg-transparent placeholder-secondary"
-								placeholder="File name"
-								{...register("file_name")}
-								error={errors.file_name}
-								readOnly
-							/>
-							<Input
-								label="Enter version number"
-								type="number"
-								className="w-full border-border-input-light bg-transparent placeholder-secondary"
-								placeholder="Version number"
-								{...register("version")}
-								error={errors.version}
-								readOnly
-							/>
-							<Input
-								label="Enter signature"
-								type="text"
-								className="w-full border-border-input-light bg-transparent placeholder-secondary"
-								placeholder="Signature"
-								{...register("signature")}
-								error={errors.signature}
-								readOnly
-							/>
-							<Input
-								label="Enter public ID"
-								type="text"
-								className="w-full border-border-input-light bg-transparent placeholder-secondary"
-								placeholder="Public ID"
-								{...register("public_id")}
-								error={errors.public_id}
-								readOnly
-							/>
+							<Button
+								type="button"
+								onClick={handleOpenModalWithFileDropzone}
+								size="lg"
+								className="w-full bg-navy text-white"
+							>
+								Upload file
+							</Button>
+							{uploadStatus === "complete" && <FileUploadFields />}
 						</>
 					)}
 				</div>
@@ -176,12 +179,12 @@ function CreateTestResultsForm() {
 						disabled={isSubmitting || isPending || !isValid}
 						className="w-full bg-dark-green text-white"
 					>
-						Update
+						Add new health screening
 					</Button>
 				</div>
 			</form>
-		</>
+		</FormProvider>
 	);
 }
 
-export default CreateTestResultsForm;
+export default AddNewHealthScreeningForm;

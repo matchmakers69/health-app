@@ -8,6 +8,18 @@ export const reducer = (state: DashboardLayoutContextState, action: DashboardLay
 				isSidebarInView: action.payload,
 			};
 
+		case "OPEN_MODAL":
+			return {
+				...state,
+				isModalInView: action.payload,
+			};
+
+		case "CLOSE_MODAL":
+			return {
+				...state,
+				isModalInView: action.payload,
+			};
+
 		default:
 			return state;
 	}

@@ -32,7 +32,7 @@ export const useAppLayoutContext = () => {
 	const context = useContext(AppLayoutContext);
 
 	if (!context) {
-		throw new Error("Please make sure you wrapped by Provider");
+		throw new Error("Wrap by Provider!");
 	}
 
 	return context;

@@ -1,28 +1,25 @@
 "use client";
 
 import { useMemo } from "react";
-import { type DocumentsUploadQueueProps, type DocumentUploadsItem } from "./defs";
+import { type DocumentsUploadQueueProps } from "./defs";
 import { type Document } from "@/context/FileUploadsContext/defs";
 import { useFileUploadContext } from "@/context/FileUploadsContext/FileUploadsContext";
 
 function DocumentsUploadQueue({ onRemoveDocument }: DocumentsUploadQueueProps) {
 	const { documents } = useFileUploadContext();
 
-	const uploadedDocuments: DocumentUploadsItem[] = useMemo(() => {
-		return documents.map(
-			(document: Document) =>
-				({
-					fileId: document.fileId,
-					fileName: document.file.name,
-					status: document.status,
-				}) as DocumentUploadsItem,
-		);
+	const filesAddedToQueue = useMemo(() => {
+		return documents.map((document: Document) => ({
+			fileId: document.file.fileId,
+			fileName: document.fileName,
+			status: document.status,
+		}));
 	}, [documents]);
 
-	// const isUploadCompleted = uploadStatus === "complete";
+	//const isUploadCompleted = uploadStatus === "complete";
 	// const isUploading = uploadStatus === "uploading" || uploadStatus === "error";
 
-	if (uploadedDocuments.length === 0) return null;
+	if (filesAddedToQueue.length === 0) return null;
 
 	return (
 		<div className="flex flex-col">
@@ -44,10 +41,10 @@ function DocumentsUploadQueue({ onRemoveDocument }: DocumentsUploadQueueProps) {
 								</tr>
 							</thead>
 							<tbody>
-								{uploadedDocuments.map((uploadedItem, index) => {
+								{filesAddedToQueue.map((uploadedItem) => {
 									return (
 										<tr
-											key={index}
+											key={uploadedItem.fileId}
 											className="border-b border-neutral-200 transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-white/10 dark:hover:bg-neutral-600"
 										>
 											<td className="whitespace-nowrap px-6 py-4 font-medium">{uploadedItem.fileName}</td>

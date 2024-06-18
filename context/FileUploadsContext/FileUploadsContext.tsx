@@ -22,6 +22,8 @@ const initialState: DocumentUploadState = {
 	documents: [],
 	isUploading: false,
 	uploadedFiles: [],
+	rejectedFiles: [],
+	uploadStatus: "idle",
 };
 
 // const initialState: DocumentUploadState = {

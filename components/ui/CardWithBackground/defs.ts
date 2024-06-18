@@ -1,5 +1,5 @@
 import { type ReactNode } from "react";
 
-export interface IssuesCardProps {
+export interface CardWithBackgroundProps {
 	children: ReactNode;
 }

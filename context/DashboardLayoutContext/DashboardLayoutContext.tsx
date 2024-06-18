@@ -8,6 +8,7 @@ const DashboardLayoutContext = createContext<DashboardLayoutContextInit | null>(
 
 const initialState = {
 	isSidebarInView: true,
+	isModalInView: false,
 };
 
 export const DashboardLayoutContextProvider = ({ children }: DashboardLayoutContextProps) => {

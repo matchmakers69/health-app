@@ -1,7 +1,7 @@
 import { Card } from "../Card";
-import { type UserProfileCardProps } from "./defs";
+import { type CardTransparentBackgroundProps } from "./defs";
 
-function UserProfileCard({ children }: UserProfileCardProps) {
+function CardTransparentBackground({ children }: CardTransparentBackgroundProps) {
 	return (
 		<Card className="w-full max-w-[100%] p-[3rem] sm:max-w-[56rem] md:max-w-[60rem] lg:max-w-[70rem]">
 			<div className="flex h-full w-full flex-col sm:flex-wrap lg:flex-nowrap">
@@ -11,4 +11,4 @@ function UserProfileCard({ children }: UserProfileCardProps) {
 	);
 }
 
-export { UserProfileCard };
+export default CardTransparentBackground;

@@ -5,19 +5,26 @@ import { FileDropzone } from "../FileDropzone";
 import { Card } from "../../Card";
 import { DocumentsUploadQueue } from "../DocumentsUploadQueue";
 import { Button } from "../../Button";
+import { type InvalidFiles } from "../defs";
 import { type FileDropzoneWrapperProps } from "./defs";
 import acceptedDocumentTypes from "@/lib/constants";
 import { useFileUploadContext } from "@/context/FileUploadsContext/FileUploadsContext";
 import { getSignature, saveToDatabase } from "@/actions/upload";
+import { generateShortNumericUUID } from "@/utils/generateShortNumericUUID";
+import { type FileWithMetadata } from "@/context/FileUploadsContext/defs";
 
 function FileDropzoneWrapper({ maxSizeInMB }: FileDropzoneWrapperProps) {
 	const { dispatch, documents, isUploading } = useFileUploadContext();
 
 	const handleFilesAdded = useCallback(
-		(files: File[]) => {
+		(files: File[], rejectedFiles: InvalidFiles) => {
 			files.forEach((file) => {
-				dispatch({ type: "ADD_DOCUMENT", payload: file });
+				const fileId = generateShortNumericUUID();
+				const fileWithId: FileWithMetadata = Object.assign(file, { fileId });
+				dispatch({ type: "ADD_DOCUMENT", payload: fileWithId });
 			});
+
+			dispatch({ type: "SET_REJECTED_FILES", payload: rejectedFiles });
 		},
 		[dispatch],
 	);
@@ -28,7 +35,7 @@ function FileDropzoneWrapper({ maxSizeInMB }: FileDropzoneWrapperProps) {
 			dispatch({ type: "SET_IS_UPLOADING", payload: true });
 
 			const filesToUpload = documents.filter((doc) => doc.status === "ready");
-			if (filesToUpload.length === 0) {
+			if (!filesToUpload.length) {
 				dispatch({ type: "SET_IS_UPLOADING", payload: false });
 				return;
 			}
@@ -37,7 +44,7 @@ function FileDropzoneWrapper({ maxSizeInMB }: FileDropzoneWrapperProps) {
 				filesToUpload.map(async (document) => {
 					const { file } = document;
 					dispatch({ type: "UPDATE_DOCUMENT_STATUS", payload: { file, status: "uploading" } });
-
+					dispatch({ type: "SET_UPLOAD_STATUS", payload: "uploading" });
 					try {
 						const { timestamp, signature } = await getSignature();
 
@@ -68,9 +75,11 @@ function FileDropzoneWrapper({ maxSizeInMB }: FileDropzoneWrapperProps) {
 						});
 						dispatch({ type: "SAVE_UPLOADED_FILE", payload: data });
 						dispatch({ type: "UPDATE_DOCUMENT_STATUS", payload: { file, status: "complete" } });
+						dispatch({ type: "SET_UPLOAD_STATUS", payload: "complete" });
 					} catch (error) {
 						console.error("Error uploading file:", error);
 						dispatch({ type: "UPDATE_DOCUMENT_STATUS", payload: { file, status: "error" } });
+						dispatch({ type: "SET_UPLOAD_STATUS", payload: "error" });
 					}
 				}),
 			);

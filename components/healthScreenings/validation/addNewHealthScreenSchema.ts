@@ -11,17 +11,17 @@ const numberOrEmptyString = z.preprocess((val) => {
 	return val;
 }, z.number().nullable().optional());
 
-export const testResultsSchema = z
+export const addNewHealthScreenSchema = z
 	.object({
 		name: z
 			.string()
 			.min(2, { message: validationRules.TEST_RESULTS.nameMin })
 			.max(30, { message: validationRules.TEST_RESULTS.nameMaxLength }),
 
-		description: z
+		notes: z
 			.string()
-			.min(10, { message: validationRules.TEST_RESULTS.descriptionMin })
-			.max(500, { message: validationRules.TEST_RESULTS.descriptionMaxLength }),
+			.min(10, { message: validationRules.TEST_RESULTS.noteMin })
+			.max(500, { message: validationRules.TEST_RESULTS.noteMaxLength }),
 		attachFile: z.boolean().optional(),
 		file_name: z.string().nullable().optional(),
 		version: numberOrEmptyString,
@@ -61,4 +61,4 @@ export const testResultsSchema = z
 		}
 	});
 
-export type TestResultsFormValues = z.infer<typeof testResultsSchema>;
+export type AddNewHealthScreenSchemaValues = z.infer<typeof addNewHealthScreenSchema>;

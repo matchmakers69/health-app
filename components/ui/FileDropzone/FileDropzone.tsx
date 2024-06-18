@@ -3,27 +3,16 @@
 import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import { Button } from "../Button";
-import { type FileDropzoneProps } from "./defs";
+import { type InvalidFiles, type FileDropzoneProps } from "./defs";
 import { convertMbToBytes } from "@/utils/convertMbToBytes";
 
 function FileDropzone({ className, acceptedFileTypes, onFilesAdded, maxSizeInMB }: FileDropzoneProps) {
 	const onDrop = useCallback(
-		(acceptedFiles: File[]) => {
-			onFilesAdded(acceptedFiles);
+		(acceptedFiles: File[], rejectedFiles: InvalidFiles) => {
+			onFilesAdded(acceptedFiles, rejectedFiles);
 		},
 		[onFilesAdded],
 	);
-	// const onDrop = useCallback(
-	// 	(acceptedFiles: File[], fileRejections: FileRejection[]) => {
-	// 		const rejectedFiles = fileRejections.map((fileRejection) => fileRejection.file);
-	// 		const invalidFiles: InvalidFiles = rejectedFiles.map((file) => ({
-	// 			file,
-	// 			errors: [{ code: "INVALID_FILE", message: "File is not valid" }],
-	// 		}));
-	// 		onFilesSelected(acceptedFiles, invalidFiles);
-	// 	},
-	// 	[onFilesSelected],
-	// );
 
 	const { getRootProps, getInputProps, isDragActive } = useDropzone({
 		maxSize: convertMbToBytes(maxSizeInMB),

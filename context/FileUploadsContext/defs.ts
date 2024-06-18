@@ -1,13 +1,17 @@
 import { type ReactNode, type Dispatch } from "react";
-import { type DocumentUploadStatus } from "@/components/ui/FileDropzone/defs";
+import { type InvalidFiles, type DocumentUploadStatus } from "@/components/ui/FileDropzone/defs";
 
 export interface FilesUploadContextProviderProps {
 	children: ReactNode;
 }
+export interface FileWithMetadata extends File {
+	fileId?: number;
+	path?: string;
+}
 
 export interface Document {
-	fileId?: number; // File ID is used for locally referencing the file for removal from the queue
-	file: File;
+	file: FileWithMetadata;
+	fileName: string;
 	status: DocumentUploadStatus;
 }
 
@@ -23,20 +27,33 @@ export interface DocumentUploadState {
 	documents: Document[];
 	uploadedFiles: DocumentUploaded[];
 	isUploading: boolean;
-	// uploadStatus: UploadStatus;
-	// documents: Document[];
-	// rejectedFiles: InvalidFiles;
+	uploadStatus: UploadStatus;
+	rejectedFiles: InvalidFiles;
 	// removalMessage: string | null;
 	// isContainUploadFailed: boolean;
 }
 
 export type DocumentUploadAction =
-	| { type: "ADD_DOCUMENT"; payload: File }
+	| { type: "SET_UPLOAD_STATUS"; payload: UploadStatus }
+	| { type: "ADD_DOCUMENT"; payload: FileWithMetadata }
+	| { type: "RESET" }
+	| {
+			type: "SET_REJECTED_FILES";
+			payload: InvalidFiles;
+	  }
 	| { type: "SAVE_UPLOADED_FILE"; payload: DocumentUploaded }
 	| { type: "SET_IS_UPLOADING"; payload: boolean }
-	| { type: "UPDATE_DOCUMENT_STATUS"; payload: { file: File; status: Document["status"] } }
-	| { type: "REMOVE_DOCUMENT"; payload: File }
-	| { type: "CANCEL_DOCUMENT"; payload: File };
+	| { type: "UPDATE_DOCUMENT_STATUS"; payload: { file: FileWithMetadata; status: Document["status"] } }
+	| { type: "REMOVE_DOCUMENT"; payload: FileWithMetadata }
+	| { type: "CANCEL_DOCUMENT"; payload: FileWithMetadata };
+
+// export type DocumentUploadAction =
+// 	| { type: "ADD_DOCUMENT"; payload: FileWithMetadata }
+// 	| { type: "SAVE_UPLOADED_FILE"; payload: DocumentUploaded }
+// 	| { type: "SET_IS_UPLOADING"; payload: boolean }
+// 	| { type: "UPDATE_DOCUMENT_STATUS"; payload: { file: File; status: Document["status"] } }
+// 	| { type: "REMOVE_DOCUMENT"; payload: File }
+// 	| { type: "CANCEL_DOCUMENT"; payload: File };
 
 // export type DocumentUploadAction =
 // 	| { type: "SET_UPLOAD_STATUS"; payload: UploadStatus }

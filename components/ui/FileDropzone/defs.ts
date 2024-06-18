@@ -2,8 +2,7 @@ export interface FileDropzoneProps {
 	maxSizeInMB: number;
 	className?: string;
 	acceptedFileTypes: Record<string, string[]>;
-	onFilesAdded: (files: File[]) => void;
-	// onFilesSelected: (acceptedFiles: File[], rejectedFiles: InvalidFiles) => void;
+	onFilesAdded: (acceptedFiles: File[], rejectedFiles: InvalidFiles) => void;
 }
 
 export interface FileError {
@@ -13,7 +12,10 @@ export interface FileError {
 
 export interface InvalidFile {
 	file: File;
-	errors: FileError[];
+	errors: {
+		code: string;
+		message: string;
+	}[];
 }
 
 export type InvalidFiles = InvalidFile[];

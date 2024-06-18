@@ -2,15 +2,33 @@ import { type DocumentUploadAction, type DocumentUploadState } from "../defs";
 
 export const reducer = (state: DocumentUploadState, action: DocumentUploadAction): DocumentUploadState => {
 	switch (action.type) {
+		case "SET_UPLOAD_STATUS":
+			return {
+				...state,
+				uploadStatus: action.payload,
+			};
 		case "ADD_DOCUMENT":
 			return {
 				...state,
-				documents: [...state.documents, { file: action.payload, status: "ready" }],
+				documents: [
+					...state.documents,
+					{ file: action.payload, fileName: action.payload.name, status: "ready" },
+				],
 			};
 		case "SAVE_UPLOADED_FILE":
 			return {
 				...state,
 				uploadedFiles: [...state.uploadedFiles, action.payload],
+			};
+
+		case "RESET":
+			return {
+				...state,
+				uploadStatus: "idle",
+				documents: [],
+				uploadedFiles: [],
+				// isContainUploadFailed: false,
+				rejectedFiles: [],
 			};
 		case "UPDATE_DOCUMENT_STATUS":
 			return {
@@ -23,6 +41,11 @@ export const reducer = (state: DocumentUploadState, action: DocumentUploadAction
 			return {
 				...state,
 				documents: state.documents.filter((doc) => doc.file !== action.payload),
+			};
+		case "SET_REJECTED_FILES":
+			return {
+				...state,
+				rejectedFiles: action.payload,
 			};
 		case "CANCEL_DOCUMENT":
 			return {
