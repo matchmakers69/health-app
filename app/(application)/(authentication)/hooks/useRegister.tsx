@@ -18,7 +18,7 @@ export const useRegister = () => {
 		handleSubmit,
 		formState: { errors, isDirty, isSubmitting },
 	} = useForm<RegisterFormValues>({
-		mode: "onSubmit",
+		mode: "onChange",
 		resolver: zodResolver(registerSchema),
 		defaultValues: {
 			name: "",

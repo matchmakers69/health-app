@@ -16,10 +16,20 @@ function Navbar() {
 			<Header>
 				<div className="site-header-right relative flex h-full flex-1 flex-wrap items-center justify-end">
 					<div className="auth-buttons-wrapper flex items-center gap-6 pr-[1.5rem] md:pr-[20px]">
-						<Button className="hidden uppercase md:flex" variant="default" asChild size="sm">
+						<Button
+							className="hidden bg-button-brown-bg uppercase hover:bg-white hover:text-navy md:flex"
+							variant="default"
+							asChild
+							size="sm"
+						>
 							<Link href={routes.LOGIN}>{appLinkLabels.LOGIN}</Link>
 						</Button>
-						<Button className="hidden uppercase md:flex" variant="outline" asChild size="sm">
+						<Button
+							className="hidden uppercase hover:bg-white hover:text-navy md:flex"
+							variant="outline"
+							asChild
+							size="sm"
+						>
 							<Link href={routes.REGISTER}>{appLinkLabels.REGISTER}</Link>
 						</Button>
 					</div>

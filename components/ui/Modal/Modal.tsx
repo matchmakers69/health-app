@@ -28,7 +28,7 @@ const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
 
 								<p className="text-dark-blue text-lg font-semibold">{title}</p>
 							</header>
-							<div className="relative flex-auto p-6">{children}</div>
+							<div className="relative flex-auto p-4">{children}</div>
 						</div>
 					</div>
 				</div>

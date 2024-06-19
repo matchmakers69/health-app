@@ -1,8 +1,8 @@
 "use client";
 
 import { FormProvider, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { type ChangeEvent, useEffect, useState, useTransition } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
 	type AddNewHealthScreenSchemaValues,
 	addNewHealthScreenSchema,
@@ -33,10 +33,8 @@ function AddNewHealthScreeningForm() {
 			name: "",
 			notes: "",
 			attachFile: false,
-			file_name: documents[0]?.file.name || "",
-			version: uploadedFiles[0]?.version ? Number(uploadedFiles[0]?.version) : null,
-			signature: uploadedFiles[0]?.signature || "",
-			public_id: uploadedFiles[0]?.public_id || "",
+			secure_url: uploadedFiles[0]?.secure_url || "",
+			format: uploadedFiles[0]?.format || "",
 		},
 	});
 
@@ -56,10 +54,8 @@ function AddNewHealthScreeningForm() {
 		if (documents.length > 0 && uploadedFiles.length > 0) {
 			reset((values) => ({
 				...values,
-				file_name: documents[0]?.file.name,
-				version: Number(uploadedFiles[0]?.version),
-				signature: uploadedFiles[0]?.signature,
-				public_id: uploadedFiles[0]?.public_id,
+				secure_url: uploadedFiles[0]?.secure_url || "",
+				format: uploadedFiles[0]?.format || "",
 			}));
 		}
 	}, [documents, reset, uploadedFiles]);
@@ -72,9 +68,13 @@ function AddNewHealthScreeningForm() {
 
 	const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setValue("attachFile", e.target.checked);
-		setIsFormInteracted(true); // Set isFormInteracted to true when the checkbox is clicked
+		setIsFormInteracted(true);
 
 		if (e.target.checked) {
+			trigger();
+		} else {
+			setValue("secure_url", "");
+			setValue("format", "");
 			trigger();
 		}
 	};
@@ -87,13 +87,11 @@ function AddNewHealthScreeningForm() {
 	};
 
 	const handleAddNewHealthScreeningSubmit = (values: AddNewHealthScreenSchemaValues) => {
-		setIsFormInteracted(true); // Set isFormInteracted to true when the form is submitted
+		setIsFormInteracted(true);
 		const payload = {
 			...values,
-			file_name: values.attachFile ? values.file_name : null,
-			version: values.attachFile ? values.version : null,
-			signature: values.attachFile ? values.signature : null,
-			public_id: values.attachFile ? values.public_id : null,
+			secure_url: values.secure_url ? values.secure_url : null,
+			format: values.format ? values.format : null,
 		};
 
 		startTransition(() => {
@@ -108,10 +106,8 @@ function AddNewHealthScreeningForm() {
 							name: "",
 							notes: "",
 							attachFile: false,
-							file_name: "",
-							version: null,
-							signature: "",
-							public_id: "",
+							secure_url: "",
+							format: "",
 						});
 						fileUploadDispatch({
 							type: "SET_UPLOAD_STATUS",
@@ -159,7 +155,7 @@ function AddNewHealthScreeningForm() {
 							<Button
 								type="button"
 								onClick={handleOpenModalWithFileDropzone}
-								size="lg"
+								size="full"
 								className="w-full bg-navy text-white"
 							>
 								Upload file
@@ -175,8 +171,13 @@ function AddNewHealthScreeningForm() {
 				<div className="mb-8">
 					<Button
 						type="submit"
-						size="lg"
-						disabled={isSubmitting || isPending || !isValid}
+						size="full"
+						disabled={
+							isSubmitting ||
+							isPending ||
+							!isValid ||
+							(attachFile && (!uploadedFiles[0]?.secure_url || !uploadedFiles[0]?.format))
+						}
 						className="w-full bg-dark-green text-white"
 					>
 						Add new health screening

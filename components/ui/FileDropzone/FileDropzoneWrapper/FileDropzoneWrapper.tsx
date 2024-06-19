@@ -4,8 +4,8 @@ import { useCallback } from "react";
 import { FileDropzone } from "../FileDropzone";
 import { Card } from "../../Card";
 import { DocumentsUploadQueue } from "../DocumentsUploadQueue";
-import { Button } from "../../Button";
 import { type InvalidFiles } from "../defs";
+import UploadingButtons from "../UploadingButtons";
 import { type FileDropzoneWrapperProps } from "./defs";
 import acceptedDocumentTypes from "@/lib/constants";
 import { useFileUploadContext } from "@/context/FileUploadsContext/FileUploadsContext";
@@ -14,7 +14,7 @@ import { generateShortNumericUUID } from "@/utils/generateShortNumericUUID";
 import { type FileWithMetadata } from "@/context/FileUploadsContext/defs";
 
 function FileDropzoneWrapper({ maxSizeInMB }: FileDropzoneWrapperProps) {
-	const { dispatch, documents, isUploading } = useFileUploadContext();
+	const { dispatch, documents, uploadStatus } = useFileUploadContext();
 
 	const handleFilesAdded = useCallback(
 		(files: File[], rejectedFiles: InvalidFiles) => {
@@ -96,27 +96,47 @@ function FileDropzoneWrapper({ maxSizeInMB }: FileDropzoneWrapperProps) {
 		}
 	};
 
+	const handleCancelUploading = useCallback(() => {
+		dispatch({ type: "RESET" });
+	}, [dispatch]);
+
+	const handleUploadMoreFiles = useCallback(() => {
+		dispatch({ type: "RESET" });
+	}, [dispatch]);
+
+	const isUploadCompleted = uploadStatus === "complete";
+	const isUploading = uploadStatus === "uploading" || uploadStatus === "error";
+
 	return (
 		<>
 			<form noValidate onSubmit={handleSubmit}>
-				<Card className="w-full max-w-[100%] p-[3rem] sm:max-w-[56rem] md:max-w-[60rem] lg:max-w-[70rem]">
-					<h2 className="mb-3 font-medium text-dark-green">Choose files to upload</h2>
-					<div className="flex h-full w-full flex-col sm:flex-wrap lg:flex-nowrap">
-						<div className="flex flex-col">
-							<FileDropzone
-								maxSizeInMB={maxSizeInMB}
-								onFilesAdded={handleFilesAdded}
-								acceptedFileTypes={acceptedDocumentTypes}
-								className="mb-0 flex flex-col items-center"
-							/>
+				{!documents.length && ( // We allow only one file to be added - possibly change later
+					<Card className="w-full max-w-[100%] p-[3rem] sm:max-w-[56rem] md:max-w-[60rem] lg:max-w-[70rem]">
+						<h2 className="mb-3 font-medium text-dark-green">Choose files to upload</h2>
+						<div className="flex h-full w-full flex-col sm:flex-wrap lg:flex-nowrap">
+							<div className="flex flex-col">
+								<FileDropzone
+									maxSizeInMB={maxSizeInMB}
+									onFilesAdded={handleFilesAdded}
+									acceptedFileTypes={acceptedDocumentTypes}
+									className="mb-0 flex flex-col items-center"
+								/>
+							</div>
 						</div>
-					</div>
-				</Card>
+					</Card>
+				)}
 
-				<DocumentsUploadQueue onRemoveDocument={handleRemoveDocument} />
-				<Button type="submit" disabled={isUploading}>
-					{isUploading ? <div className="spinner">Uploading files...</div> : "Submit"}
-				</Button>
+				{documents.length > 0 && (
+					<>
+						<DocumentsUploadQueue onRemoveDocument={handleRemoveDocument} />
+						<UploadingButtons
+							uploadComplete={isUploadCompleted}
+							onCancel={handleCancelUploading}
+							uploadInProgress={isUploading}
+							onUploadMoreFiles={handleUploadMoreFiles}
+						/>
+					</>
+				)}
 			</form>
 		</>
 	);

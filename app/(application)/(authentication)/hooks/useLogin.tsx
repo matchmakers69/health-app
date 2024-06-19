@@ -24,7 +24,7 @@ export const useLogin = () => {
 		handleSubmit,
 		formState: { errors, isDirty, isSubmitting },
 	} = useForm<LoginFormValues>({
-		mode: "onSubmit",
+		mode: "onChange",
 		resolver: zodResolver(loginSchema),
 		defaultValues: {},
 	});

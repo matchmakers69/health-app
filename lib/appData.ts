@@ -7,6 +7,13 @@ export const appLinkLabels = {
 	SETTINGS: "Settings",
 	ISSUES: "Issues",
 	SIGN_OUT: "Sign out",
+	HEALTH_SCREENINGS: {
+		cancelButton: "Cancel",
+		uploadMoreButton: "Upload more files",
+		goToHealthScreenings: "View all screenings",
+		startUploadingButton: "Start uploading",
+		uploadingFiles: "Uploading files...",
+	},
 };
 
 export const headerLabels = {
@@ -112,10 +119,8 @@ export const validationRules = {
 		noteMaxLength: "Note must be a maximun 500 characters",
 		nameMin: "Title must be at least 2 characters long",
 		noteMin: "Note must be at least 8 characters long",
-		file_nameRequired: "File name is required when attaching a file",
-		versionRequired: "Version is required when attaching a file",
-		signatureRequired: "Signature is required when attaching a file",
-		public_idRequired: "Public ID is required when attaching a file",
+		urlRequired: "File's url is required",
+		formatRequired: "File's format is required",
 	},
 };
 

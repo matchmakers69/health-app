@@ -52,9 +52,9 @@ export function RegisterForm() {
 					<Button
 						type="submit"
 						variant="default"
-						size="lg"
+						size="full"
 						disabled={!isDirty || isSubmitting || isPending}
-						className="w-full"
+						className="bg-button-brown-bg"
 					>
 						Register
 					</Button>

@@ -90,10 +90,8 @@ model HealthScreeningResult {
   id          String    @id @default(uuid())
   name        String    @db.VarChar(255)
   issued_date DateTime? @db.Date
-  file_name   String?
-  signature   String?
-  version     Int?
-  public_id   String?
+  secure_url  String?
+  format      String?
   notes       String    @db.Text
   createdAt   DateTime? @default(now())
   updatedAt   DateTime? @updatedAt

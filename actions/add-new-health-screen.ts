@@ -17,16 +17,14 @@ export const addNewHealthScreen = async (values: AddNewHealthScreenSchemaValues)
 		return { error: "Something went wrong with validation" };
 	}
 
-	const { name, notes, file_name, signature, public_id, version } = validatedFields.data;
+	const { name, notes, secure_url, format } = validatedFields.data;
 
 	await db.healthScreeningResult.create({
 		data: {
 			name,
 			notes,
-			file_name,
-			signature,
-			version,
-			public_id,
+			secure_url,
+			format,
 			ownerId: user?.id,
 		},
 	});

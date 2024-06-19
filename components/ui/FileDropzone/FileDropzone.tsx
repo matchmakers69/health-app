@@ -27,13 +27,18 @@ function FileDropzone({ className, acceptedFileTypes, onFilesAdded, maxSizeInMB 
 			})}
 		>
 			<input {...getInputProps()} />
-			<div className="dashed-dropzone-container flex h-[17rem] w-full flex-col items-center justify-center border-2 border-dashed border-indigo-600 p-6">
+			<div className="dashed-dropzone-container flex h-[17rem] w-full flex-col items-center justify-center border-2 border-dashed border-gray-300 p-4">
 				{isDragActive ? (
 					<p>Drag file you want to upload here</p>
 				) : (
-					<div className="file-drop-box flex flex-col items-center justify-center">
+					<div className="file-drop-box flex cursor-pointer flex-col items-center justify-center gap-0">
+						<i className="ri-file-upload-line text-[2.5rem]"></i>
 						<p className="mb-4 font-semibold">Drag and drop files here or</p>
-						<Button type="button" size="lg" className="w-full min-w-[10rem] max-w-[15rem] text-white">
+						<Button
+							type="button"
+							size="lg"
+							className="w-full min-w-[10rem] max-w-[15rem] bg-button-brown-bg text-white"
+						>
 							Browse files
 						</Button>
 					</div>

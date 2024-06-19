@@ -12,39 +12,21 @@ function FileUploadFields() {
 	return (
 		<>
 			<Input
-				label="Enter file name"
+				label="File url"
 				type="text"
 				className="w-full border-border-input-light bg-white placeholder-secondary"
-				placeholder="File name"
-				{...register("file_name")}
-				error={getFieldError(errors, "file_name")}
+				placeholder="File url"
+				{...register("secure_url")}
+				error={getFieldError(errors, "secure_url")}
 				readOnly
 			/>
 			<Input
-				label="Enter version number"
-				type="number"
-				className="w-full border-border-input-light bg-white placeholder-secondary"
-				placeholder="Version number"
-				{...register("version")}
-				error={getFieldError(errors, "version")}
-				readOnly
-			/>
-			<Input
-				label="Enter signature"
+				label="File format"
 				type="text"
 				className="w-full border-border-input-light bg-white placeholder-secondary"
-				placeholder="Signature"
-				{...register("signature")}
-				error={getFieldError(errors, "signature")}
-				readOnly
-			/>
-			<Input
-				label="Enter public ID"
-				type="text"
-				className="w-full border-border-input-light bg-white placeholder-secondary"
-				placeholder="Public ID"
-				{...register("public_id")}
-				error={getFieldError(errors, "public_id")}
+				placeholder="i.e pdf, jpg, png, docs"
+				{...register("format")}
+				error={getFieldError(errors, "format")}
 				readOnly
 			/>
 		</>

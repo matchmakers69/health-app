@@ -47,13 +47,7 @@ export const reducer = (state: DocumentUploadState, action: DocumentUploadAction
 				...state,
 				rejectedFiles: action.payload,
 			};
-		case "CANCEL_DOCUMENT":
-			return {
-				...state,
-				documents: state.documents.map((doc) =>
-					doc.file === action.payload ? { ...doc, status: "canceled" } : doc,
-				),
-			};
+
 		case "SET_IS_UPLOADING":
 			return {
 				...state,

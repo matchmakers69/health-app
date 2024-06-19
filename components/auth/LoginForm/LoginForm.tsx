@@ -74,9 +74,9 @@ export function LoginForm() {
 					<Button
 						type="submit"
 						variant="default"
-						size="lg"
+						size="full"
 						disabled={!isDirty || isSubmitting || isPending}
-						className="w-full"
+						className="bg-button-brown-bg"
 					>
 						{showTwoFactor
 							? pagesText.AUTH_PAGES.LOGIN.confirmButtonLabel

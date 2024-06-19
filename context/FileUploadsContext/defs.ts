@@ -16,9 +16,11 @@ export interface Document {
 }
 
 export interface DocumentUploaded {
-	version: number;
-	signature: string;
-	public_id: string;
+	secure_url: string;
+	format: string;
+	// version: number;
+	// signature: string;
+	// public_id: string;
 }
 
 export type UploadStatus = "idle" | "uploading" | "complete" | "error";
@@ -44,52 +46,7 @@ export type DocumentUploadAction =
 	| { type: "SAVE_UPLOADED_FILE"; payload: DocumentUploaded }
 	| { type: "SET_IS_UPLOADING"; payload: boolean }
 	| { type: "UPDATE_DOCUMENT_STATUS"; payload: { file: FileWithMetadata; status: Document["status"] } }
-	| { type: "REMOVE_DOCUMENT"; payload: FileWithMetadata }
-	| { type: "CANCEL_DOCUMENT"; payload: FileWithMetadata };
-
-// export type DocumentUploadAction =
-// 	| { type: "ADD_DOCUMENT"; payload: FileWithMetadata }
-// 	| { type: "SAVE_UPLOADED_FILE"; payload: DocumentUploaded }
-// 	| { type: "SET_IS_UPLOADING"; payload: boolean }
-// 	| { type: "UPDATE_DOCUMENT_STATUS"; payload: { file: File; status: Document["status"] } }
-// 	| { type: "REMOVE_DOCUMENT"; payload: File }
-// 	| { type: "CANCEL_DOCUMENT"; payload: File };
-
-// export type DocumentUploadAction =
-// 	| { type: "SET_UPLOAD_STATUS"; payload: UploadStatus }
-// 	| { type: "RESET" }
-// 	| {
-// 			type: "ADD_DOCUMENTS";
-// 			payload: Document[];
-// 	  }
-// 	| {
-// 			type: "SET_DOCUMENTS";
-// 			payload: Document[];
-// 	  }
-// 	| {
-// 			type: "SET_DOCUMENT_STATUS";
-// 			payload: {
-// 				documentId?: string;
-// 				fileId?: number;
-// 				status: DocumentUploadStatus;
-// 			};
-// 	  }
-// 	| {
-// 			type: "SET_DOCUMENT_ID";
-// 			payload: { documentId: string; fileId: number };
-// 	  }
-// 	| {
-// 			type: "SET_REJECTED_FILES";
-// 			payload: InvalidFiles;
-// 	  }
-// 	| {
-// 			type: "REMOVE_DOCUMENT";
-// 			payload: { fileId: number };
-// 	  }
-// 	| { type: "SET_REMOVAL_MESSAGE"; payload: string }
-// 	| { type: "RESET_REMOVAL_MESSAGE" }
-// 	| { type: "SET_EMPLOYMENT_REF"; payload: number }
-// 	| { type: "SET_WORKFLOW_ID"; payload: string };
+	| { type: "REMOVE_DOCUMENT"; payload: FileWithMetadata };
 
 export type DocumentUploadInit = DocumentUploadState & {
 	dispatch: Dispatch<DocumentUploadAction>;
