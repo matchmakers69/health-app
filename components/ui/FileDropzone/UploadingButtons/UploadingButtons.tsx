@@ -1,7 +1,5 @@
-import Link from "next/link";
 import { Button } from "../../Button";
 import { type UploadingButtonsProps } from "./defs";
-import { routes } from "@/lib/routes";
 import { appLinkLabels } from "@/lib/appData";
 
 function UploadingButtons({
@@ -9,6 +7,7 @@ function UploadingButtons({
 	uploadInProgress,
 	uploadComplete,
 	onUploadMoreFiles,
+	onCloseDropzoneModal,
 }: UploadingButtonsProps) {
 	return (
 		<div className="flex items-center justify-center gap-6">
@@ -36,10 +35,13 @@ function UploadingButtons({
 			)}
 			{uploadComplete && (
 				<>
-					<Button className="hidden bg-navy md:flex" variant="default" asChild size="default">
-						<Link href={routes.MY_HEALTH_SCREENINGS}>
-							{appLinkLabels.HEALTH_SCREENINGS.goToHealthScreenings}
-						</Link>
+					<Button
+						className="hidden bg-navy md:flex"
+						variant="default"
+						onClick={onCloseDropzoneModal}
+						size="default"
+					>
+						{appLinkLabels.HEALTH_SCREENINGS.closeButton}
 					</Button>
 
 					<Button

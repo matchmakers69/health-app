@@ -13,6 +13,7 @@ export const appLinkLabels = {
 		goToHealthScreenings: "View all screenings",
 		startUploadingButton: "Start uploading",
 		uploadingFiles: "Uploading files...",
+		closeButton: "Close",
 	},
 };
 

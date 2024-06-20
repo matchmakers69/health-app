@@ -26,14 +26,6 @@ const initialState: DocumentUploadState = {
 	uploadStatus: "idle",
 };
 
-// const initialState: DocumentUploadState = {
-// 	uploadStatus: "idle",
-// 	documents: [],
-// 	rejectedFiles: [],
-// 	removalMessage: "",
-// 	isContainUploadFailed: false,
-// };
-
 export const FilesUploadContextProvider = ({ children }: FilesUploadContextProviderProps) => {
 	const [state, dispatch] = useReducer(reducer, initialState);
 

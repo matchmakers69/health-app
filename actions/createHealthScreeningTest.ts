@@ -1,13 +1,16 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
+
 import {
 	type AddNewHealthScreenSchemaValues,
 	addNewHealthScreenSchema,
 } from "@/components/healthScreenings/validation/addNewHealthScreenSchema";
 import { currentUser } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { routes } from "@/lib/routes";
 
-export const addNewHealthScreen = async (values: AddNewHealthScreenSchemaValues) => {
+export const createHealthScreeningTest = async (values: AddNewHealthScreenSchemaValues) => {
 	const user = await currentUser();
 	if (!user || !user.id) {
 		return { error: "Sorry you are not authorized" };
@@ -28,5 +31,6 @@ export const addNewHealthScreen = async (values: AddNewHealthScreenSchemaValues)
 			ownerId: user?.id,
 		},
 	});
+	revalidatePath(`${routes.MY_HEALTH_SCREENINGS}`);
 	return { success: "Congrats! You added health screening test results!" };
 };

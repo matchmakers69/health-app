@@ -3,4 +3,5 @@ export interface UploadingButtonsProps {
 	uploadComplete: boolean;
 	onCancel: () => void;
 	onUploadMoreFiles: () => void;
+	onCloseDropzoneModal: () => void;
 }

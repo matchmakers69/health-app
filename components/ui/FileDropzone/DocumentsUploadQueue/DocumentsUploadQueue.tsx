@@ -16,9 +16,6 @@ function DocumentsUploadQueue({ onRemoveDocument }: DocumentsUploadQueueProps) {
 		}));
 	}, [documents]);
 
-	//const isUploadCompleted = uploadStatus === "complete";
-	// const isUploading = uploadStatus === "uploading" || uploadStatus === "error";
-
 	if (filesAddedToQueue.length === 0) return null;
 
 	return (

@@ -12,9 +12,11 @@ import { useFileUploadContext } from "@/context/FileUploadsContext/FileUploadsCo
 import { getSignature, saveToDatabase } from "@/actions/upload";
 import { generateShortNumericUUID } from "@/utils/generateShortNumericUUID";
 import { type FileWithMetadata } from "@/context/FileUploadsContext/defs";
+import { useDashboardLayoutContext } from "@/context/DashboardLayoutContext";
 
 function FileDropzoneWrapper({ maxSizeInMB }: FileDropzoneWrapperProps) {
 	const { dispatch, documents, uploadStatus } = useFileUploadContext();
+	const { dispatch: dashboardDispatch } = useDashboardLayoutContext();
 
 	const handleFilesAdded = useCallback(
 		(files: File[], rejectedFiles: InvalidFiles) => {
@@ -104,6 +106,13 @@ function FileDropzoneWrapper({ maxSizeInMB }: FileDropzoneWrapperProps) {
 		dispatch({ type: "RESET" });
 	}, [dispatch]);
 
+	const handleCloseDropzoneModal = useCallback(() => {
+		dashboardDispatch({
+			type: "CLOSE_MODAL",
+			payload: false,
+		});
+	}, [dashboardDispatch]);
+
 	const isUploadCompleted = uploadStatus === "complete";
 	const isUploading = uploadStatus === "uploading" || uploadStatus === "error";
 
@@ -134,6 +143,7 @@ function FileDropzoneWrapper({ maxSizeInMB }: FileDropzoneWrapperProps) {
 							onCancel={handleCancelUploading}
 							uploadInProgress={isUploading}
 							onUploadMoreFiles={handleUploadMoreFiles}
+							onCloseDropzoneModal={handleCloseDropzoneModal}
 						/>
 					</>
 				)}

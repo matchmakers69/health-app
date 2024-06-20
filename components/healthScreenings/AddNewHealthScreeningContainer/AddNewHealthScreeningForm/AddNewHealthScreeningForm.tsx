@@ -15,7 +15,7 @@ import { useFileUploadContext } from "@/context/FileUploadsContext/FileUploadsCo
 import { FormError } from "@/components/ui/FormError";
 import { FormSuccess } from "@/components/ui/FormSuccess";
 import { Checkbox } from "@/components/ui/Checkbox";
-import { addNewHealthScreen } from "@/actions/add-new-health-screen";
+import { createHealthScreeningTest } from "@/actions/createHealthScreeningTest";
 import { useDashboardLayoutContext } from "@/context/DashboardLayoutContext";
 
 function AddNewHealthScreeningForm() {
@@ -95,7 +95,7 @@ function AddNewHealthScreeningForm() {
 		};
 
 		startTransition(() => {
-			addNewHealthScreen(payload)
+			createHealthScreeningTest(payload)
 				.then((data) => {
 					if (data?.error) {
 						setError(data.error);
