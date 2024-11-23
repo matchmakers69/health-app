@@ -1,7 +1,6 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-
 import {
 	type AddNewHealthScreenSchemaValues,
 	addNewHealthScreenSchema,
@@ -10,27 +9,34 @@ import { currentUser } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { routes } from "@/lib/routes";
 
-export const createHealthScreeningTest = async (values: AddNewHealthScreenSchemaValues) => {
+export const createHealthScreeningTest = async (payload: AddNewHealthScreenSchemaValues) => {
 	const user = await currentUser();
 	if (!user || !user.id) {
 		return { error: "Sorry you are not authorized" };
 	}
-	const validatedFields = addNewHealthScreenSchema.safeParse(values);
-	if (!validatedFields.success) {
-		return { error: "Something went wrong with validation" };
+
+	try {
+		const validatedFields = addNewHealthScreenSchema.safeParse(payload);
+		if (!validatedFields.success) {
+			return { error: "Something went wrong with validation" };
+		}
+
+		await db.healthScreeningResult.create({
+			data: {
+				name: validatedFields.data.name,
+				issued_date: new Date(validatedFields.data.date_issued), // Convert to Date here
+				notes: validatedFields.data.notes,
+				secure_url: validatedFields.data.secure_url,
+				format: validatedFields.data.format,
+				ownerId: user.id,
+			},
+		});
+
+		revalidatePath(`${routes.MY_HEALTH_SCREENINGS}`);
+
+		return { success: "Congrats! You added health screening test results!" };
+	} catch (error) {
+		console.error("Error creating health screening test:", error);
+		return { error: "Something went wrong!" };
 	}
-
-	const { name, notes, secure_url, format } = validatedFields.data;
-
-	await db.healthScreeningResult.create({
-		data: {
-			name,
-			notes,
-			secure_url,
-			format,
-			ownerId: user?.id,
-		},
-	});
-	revalidatePath(`${routes.MY_HEALTH_SCREENINGS}`);
-	return { success: "Congrats! You added health screening test results!" };
 };

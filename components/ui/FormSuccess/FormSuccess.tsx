@@ -6,7 +6,7 @@ export const FormSuccess = ({ message }: FormSuccessProps) => {
 	return (
 		<div className="mb-8 flex items-center bg-success-foreground px-6 py-3 text-sm text-success">
 			<i className="ri-checkbox-circle-line font-md" />
-			<p aria-live="assertive" className="font-semibold">
+			<p aria-live="polite" className="ml-2 font-semibold">
 				{message}
 			</p>
 		</div>

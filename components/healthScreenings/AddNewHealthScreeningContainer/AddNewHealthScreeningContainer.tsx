@@ -17,7 +17,7 @@ function AddNewHealthScreeningContainer() {
 	};
 	return (
 		<>
-			<Modal isOpen={isModalInView} title="Attach your file" onClose={handleCloseModal}>
+			<Modal open={isModalInView} title="Attach your file" onClose={handleCloseModal}>
 				<FileDropzoneWrapper maxSizeInMB={10} />
 			</Modal>
 

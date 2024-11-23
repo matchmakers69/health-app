@@ -1,8 +1,9 @@
 "use client";
 
 import { FormProvider, useForm } from "react-hook-form";
-import { type ChangeEvent, useEffect, useState, useTransition } from "react";
+import { useEffect, useState, useTransition, type ChangeEvent } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { parseISO } from "date-fns";
 import {
 	type AddNewHealthScreenSchemaValues,
 	addNewHealthScreenSchema,
@@ -17,6 +18,9 @@ import { FormSuccess } from "@/components/ui/FormSuccess";
 import { Checkbox } from "@/components/ui/Checkbox";
 import { createHealthScreeningTest } from "@/actions/createHealthScreeningTest";
 import { useDashboardLayoutContext } from "@/context/DashboardLayoutContext";
+import DatePicker from "@/components/ui/DatePicker";
+
+const dateFormat = "dd/MM/yyyy";
 
 function AddNewHealthScreeningForm() {
 	const { dispatch } = useDashboardLayoutContext();
@@ -32,6 +36,7 @@ function AddNewHealthScreeningForm() {
 		defaultValues: {
 			name: "",
 			notes: "",
+			date_issued: undefined, // bare in mind we could default date to currentDate
 			attachFile: false,
 			secure_url: uploadedFiles[0]?.secure_url || "",
 			format: uploadedFiles[0]?.format || "",
@@ -88,11 +93,20 @@ function AddNewHealthScreeningForm() {
 
 	const handleAddNewHealthScreeningSubmit = (values: AddNewHealthScreenSchemaValues) => {
 		setIsFormInteracted(true);
+
+		if (values.date_issued === null) {
+			setError("Please select a date");
+			return;
+		}
+
 		const payload = {
 			...values,
 			secure_url: values.secure_url ? values.secure_url : null,
 			format: values.format ? values.format : null,
+			date_issued: values.date_issued instanceof Date ? values.date_issued : parseISO(values.date_issued),
 		};
+
+		console.log(payload, "fklf");
 
 		startTransition(() => {
 			createHealthScreeningTest(payload)
@@ -108,6 +122,7 @@ function AddNewHealthScreeningForm() {
 							attachFile: false,
 							secure_url: "",
 							format: "",
+							date_issued: undefined,
 						});
 						fileUploadDispatch({
 							type: "SET_UPLOAD_STATUS",
@@ -123,6 +138,19 @@ function AddNewHealthScreeningForm() {
 	return (
 		<FormProvider {...methods}>
 			<form autoComplete="off" noValidate onSubmit={handleSubmit(handleAddNewHealthScreeningSubmit)}>
+				<div className="mb-14 flex w-full flex-col">
+					<DatePicker
+						name="date_issued"
+						variant="outlined"
+						dateFormat={dateFormat}
+						label="Select date of your health screening"
+						required
+						control={methods.control}
+						error={errors.date_issued}
+						disablePast={false}
+						disableFuture={false}
+					/>
+				</div>
 				<div className="mb-14 flex w-full flex-col gap-[3rem]">
 					<Input
 						label="Enter test result name"

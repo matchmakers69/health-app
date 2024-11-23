@@ -15,10 +15,10 @@ export const buttonVariants = cva(
 				link: "text-primary underline-offset-4 hover:underline",
 			},
 			size: {
-				default: "h-20 px-6 py-2 text-base min-w-[14rem] max-w-[20rem]",
+				default: "h-20 px-6 py-2 text-base min-w-[17rem] max-w-[20rem]",
 				full: "h-20 px-6 py-2 text-base w-full",
 				sm: "h-16 px-7 text-base min-w-[11rem] max-w-[15rem]",
-				lg: "h-20 px-8 text-md min-w-[14rem] max-w-[20rem]",
+				lg: "h-22 px-8 text-md min-w-[18rem] max-w-[22rem]",
 				xl: "h-24 px-8 text-md",
 				icon: "h-10 w-9",
 			},

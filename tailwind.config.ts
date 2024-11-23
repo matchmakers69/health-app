@@ -7,6 +7,10 @@ const config: Config = {
 		"./app/**/*.{js,ts,jsx,tsx,mdx}",
 	],
 	theme: {
+		fontFamily: {
+			IbmPlex: "'IBM_Plex_Sans', sans-serif",
+			Rubik: "'Rubik', sans-serif",
+		},
 		container: {
 			padding: {
 				DEFAULT: "1.5rem",
@@ -104,10 +108,6 @@ const config: Config = {
 				"4xl-max": { max: "1850px" },
 			},
 
-			fontFamily: {
-				IbmPlex: ["var(--font-ibmPlex)"],
-				Rubik: ["var(--font-Rubik)"],
-			},
 			backgroundImage: {
 				"gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
 				"gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",

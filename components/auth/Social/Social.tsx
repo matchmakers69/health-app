@@ -23,7 +23,7 @@ export const Social = () => {
 			</Button>
 			<Button size="lg" className="w-full" variant="secondary" onClick={() => onClick("github")}>
 				<span className="mr-2 block">Github</span>
-				<i className="ri-github-fill text-[2.5rem]"></i>
+				<i className="ri-github-fill text-[2.5rem]" />
 			</Button>
 		</>
 	);
